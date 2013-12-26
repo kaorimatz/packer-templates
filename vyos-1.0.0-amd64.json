@@ -1,0 +1,66 @@
+{
+  "builders": [{
+    "type": "virtualbox",
+    "guest_os_type": "Debian_64",
+    "iso_url": "http://mirror.vyos.net/iso/release/1.0.0/vyos-1.0.0-amd64.iso",
+    "iso_checksum": "ea8e4e23c18977f07a63f79f626c163ae315afa4",
+    "iso_checksum_type": "sha1",
+    "disk_size": 8000,
+    "boot_wait": "5s",
+    "boot_command": [
+      "<enter><wait10><wait10>",
+      "vyos<enter><wait>",
+      "vyos<enter><wait>",
+      "install system<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "Yes<enter><wait>",
+      "<enter><wait10><wait10><wait10>",
+      "<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<enter><wait5>",
+      "reboot<enter><wait>",
+      "Yes<enter><wait10><wait10><wait10>",
+      "vyos<enter><wait>",
+      "vagrant<enter><wait>",
+      "configure<enter><wait>",
+      "set interfaces ethernet eth0 address dhcp<enter><wait>",
+      "delete system console<enter><wait>",
+      "set system login user vagrant authentication plaintext-password vagrant<enter><wait>",
+      "set system login user vagrant level admin<enter><wait>",
+      "set service ssh<enter><wait>",
+      "commit<enter><wait>",
+      "save<enter><wait>",
+      "exit<enter><wait>",
+      "exit<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "configure<enter><wait>",
+      "delete system login user vyos<enter><wait>",
+      "commit<enter><wait>",
+      "save<enter><wait>",
+      "exit<enter><wait>"
+    ],
+    "shutdown_command": "sudo poweroff",
+    "ssh_wait_timeout": "20m",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/vyos/base.sh",
+      "scripts/vyos/virtualbox.sh",
+      "scripts/vyos/vagrant.sh"
+    ]
+  }]
+}
