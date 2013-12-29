@@ -2,8 +2,8 @@
   "builders": [{
     "type": "virtualbox",
     "guest_os_type": "Fedora_64",
-    "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/19/Fedora/x86_64/iso/Fedora-19-x86_64-netinst.iso",
-    "iso_checksum": "ef9eb28b6343e57de292f2b2147b8e74a2a04050655e0dc959febd69b0d5d030",
+    "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/20/Fedora/x86_64/iso/Fedora-20-x86_64-netinst.iso",
+    "iso_checksum": "376be7d4855ad6281cb139430606a782fd6189dcb01d7b61448e915802cc350f",
     "iso_checksum_type": "sha256",
     "disk_size": 8000,
     "http_directory": "http",
@@ -14,9 +14,9 @@
       "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-rawhide/anaconda-ks.cfg biosdevname=0 net.ifnames=0",
       "<enter>"
     ],
+    "ssh_wait_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "ssh_wait_timeout": "60m",
     "shutdown_command": "sudo systemctl poweroff",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "512"],
