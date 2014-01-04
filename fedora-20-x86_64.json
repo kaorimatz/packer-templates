@@ -1,6 +1,6 @@
 {
   "builders": [{
-    "type": "virtualbox",
+    "type": "virtualbox-iso",
     "guest_os_type": "Fedora_64",
     "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/20/Fedora/x86_64/iso/Fedora-20-x86_64-netinst.iso",
     "iso_checksum": "376be7d4855ad6281cb139430606a782fd6189dcb01d7b61448e915802cc350f",
