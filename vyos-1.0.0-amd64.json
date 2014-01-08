@@ -1,6 +1,6 @@
 {
   "builders": [{
-    "type": "virtualbox",
+    "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
     "iso_url": "http://mirror.vyos.net/iso/release/1.0.0/vyos-1.0.0-amd64.iso",
     "iso_checksum": "ea8e4e23c18977f07a63f79f626c163ae315afa4",
