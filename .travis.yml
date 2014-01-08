@@ -1,0 +1,8 @@
+lauguage: ruby
+rvm:
+  - 2.1.0
+install:
+  - bundle install
+  - curl -L -o packer.zip https://dl.bintray.com/mitchellh/packer/0.5.1_linux_amd64.zip && unzip -d bin packer.zip
+script:
+  - PATH=$(pwd)/bin:$PATH bundle exec rake
