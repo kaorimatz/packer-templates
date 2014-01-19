@@ -31,7 +31,8 @@
     "scripts": [
       "scripts/fedora/virtualbox.sh",
       "scripts/common/vagrant.sh",
-      "scripts/fedora/cleanup.sh"
+      "scripts/fedora/cleanup.sh",
+      "scripts/common/minimize.sh"
     ]
   }]
 }

@@ -29,7 +29,8 @@
       "scripts/centos-5.10/base.sh",
       "scripts/centos/virtualbox.sh",
       "scripts/common/vagrant.sh",
-      "scripts/centos-5.10/cleanup.sh"
+      "scripts/centos-5.10/cleanup.sh",
+      "scripts/common/minimize.sh"
     ]
   }],
   "post-processors": [{

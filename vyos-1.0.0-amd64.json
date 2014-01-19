@@ -60,7 +60,8 @@
     "scripts": [
       "scripts/vyos/base.sh",
       "scripts/vyos/virtualbox.sh",
-      "scripts/vyos/vagrant.sh"
+      "scripts/vyos/vagrant.sh",
+      "scripts/common/minimize.sh"
     ]
   }]
 }
