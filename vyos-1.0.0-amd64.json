@@ -5,7 +5,7 @@
     "iso_url": "http://mirror.vyos.net/iso/release/1.0.0/vyos-1.0.0-amd64.iso",
     "iso_checksum": "ea8e4e23c18977f07a63f79f626c163ae315afa4",
     "iso_checksum_type": "sha1",
-    "disk_size": 8000,
+    "disk_size": 40000,
     "boot_wait": "5s",
     "boot_command": [
       "<enter><wait10><wait10>",
