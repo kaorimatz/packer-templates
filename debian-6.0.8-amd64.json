@@ -5,6 +5,8 @@
     "iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.8/amd64/iso-cd/debian-6.0.8-amd64-netinst.iso",
     "iso_checksum": "9f86a05fea0d98441895584e91f8bfaaaa8e4d9421f0c9e52332616c60e1887c",
     "iso_checksum_type": "sha256",
+    "output_directory": "output-debian-6.0.8-amd64",
+    "vm_name": "packer-debian-6.0.8-amd64",
     "disk_size": 40000,
     "http_directory": "http",
     "boot_wait": "5s",
@@ -34,6 +36,7 @@
     ]
   }],
   "post-processors": [{
-    "type": "vagrant"
+    "type": "vagrant",
+    "output": "debian-6.0.8-amd64.box"
   }]
 }

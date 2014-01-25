@@ -5,6 +5,8 @@
     "iso_url": "{{user `mirror`}}/5.10/isos/x86_64/CentOS-5.10-x86_64-netinstall.iso",
     "iso_checksum": "87cdf657f3c1c0fdb77189f533d3df79bf0e36e6a797c2c145c61a00a0c6d0a2",
     "iso_checksum_type": "sha256",
+    "output_directory": "output-centos-5.10-x86_64",
+    "vm_name": "packer-centos-5.10-x86_64",
     "disk_size": 40000,
     "http_directory": "http",
     "boot_wait": "5s",
@@ -34,7 +36,8 @@
     ]
   }],
   "post-processors": [{
-    "type": "vagrant"
+    "type": "vagrant",
+    "output": "centos-5.10-x86_64.box"
   }],
   "variables": {
     "mirror": "http://mirrors.kernel.org/centos"

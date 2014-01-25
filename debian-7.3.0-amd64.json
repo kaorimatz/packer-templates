@@ -5,6 +5,8 @@
     "iso_url": "http://cdimage.debian.org/debian-cd/7.3.0/amd64/iso-cd/debian-7.3.0-amd64-netinst.iso",
     "iso_checksum": "9e6cef96d6d9d3bb8ef254dde9dd5c1ba5667cc0207531c9ef0f1a6b9f3adb1d",
     "iso_checksum_type": "sha256",
+    "output_directory": "output-debian-7.3.0-amd64",
+    "vm_name": "packer-debian-7.3.0-amd64",
     "disk_size": 40000,
     "http_directory": "http",
     "boot_wait": "5s",
@@ -34,6 +36,7 @@
     ]
   }],
   "post-processors": [{
-    "type": "vagrant"
+    "type": "vagrant",
+    "output": "debian-7.3.0-amd64.box"
   }]
 }

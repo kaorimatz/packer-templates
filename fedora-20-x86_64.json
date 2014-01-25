@@ -5,6 +5,8 @@
     "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/20/Fedora/x86_64/iso/Fedora-20-x86_64-netinst.iso",
     "iso_checksum": "376be7d4855ad6281cb139430606a782fd6189dcb01d7b61448e915802cc350f",
     "iso_checksum_type": "sha256",
+    "output_directory": "output-fedora-20-x86_64",
+    "vm_name": "packer-fedora-20-x86_64",
     "disk_size": 40000,
     "http_directory": "http",
     "boot_wait": "5s",
@@ -23,9 +25,6 @@
       ["modifyvm", "{{.Name}}", "--cpus", "1"]
     ]
   }],
-  "post-processors": [{
-    "type": "vagrant"
-  }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
@@ -34,5 +33,9 @@
       "scripts/fedora/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "output": "fedora-20-x86_64.box"
   }]
 }

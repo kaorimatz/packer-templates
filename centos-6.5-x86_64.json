@@ -5,6 +5,8 @@
     "iso_url": "{{user `mirror`}}/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
     "iso_checksum": "f9d84907d77df62017944cb23cab66305e94ee6ae6c1126415b81cc5e999bdd0",
     "iso_checksum_type": "sha256",
+    "output_directory": "output-centos-6.5-x86_64",
+    "vm_name": "packer-centos-6.5-x86_64",
     "disk_size": 40000,
     "http_directory": "http",
     "boot_wait": "5s",
@@ -34,7 +36,8 @@
     ]
   }],
   "post-processors": [{
-    "type": "vagrant"
+    "type": "vagrant",
+    "output": "centos-6.5-x86_64.box"
   }],
   "variables": {
     "mirror": "http://mirrors.kernel.org/centos"
