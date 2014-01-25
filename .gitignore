@@ -1,2 +1,3 @@
-packer_cache/
 *.box
+.bundle/
+packer_cache/
