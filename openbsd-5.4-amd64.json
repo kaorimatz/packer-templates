@@ -1,0 +1,83 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "guest_os_type": "OpenBSD_64",
+    "iso_url": "{{user `mirror`}}/5.4/amd64/cd54.iso",
+    "iso_checksum": "03124d2e38b9ac04d77be681c9c723dffb2cdd6b0688f823834c4ce1ceaa93b2",
+    "iso_checksum_type": "sha256",
+    "output_directory": "output-openbsd-5.4-amd64",
+    "vm_name": "packer-openbsd-5.4-amd64",
+    "disk_size": 40000,
+    "http_directory": "http",
+    "boot_wait": "15s",
+    "boot_command": [
+      "I<enter><wait>",
+      "<enter><wait>",
+      "vagrantup.com<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "no<enter><wait>",
+      "vagrant<enter><wait>",
+      "<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<enter><wait>",
+      "UTC<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait5>",
+      "http<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "-game*<enter><wait>",
+      "-x*<enter><wait>",
+      "<enter><wait10><wait10><wait10><wait10><wait10><wait10>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "cat <<EOS > /mnt/etc/sudoers<enter>",
+      "<enter>",
+      "#includedir /etc/sudoers.d<enter>",
+      "EOS<enter>",
+      "mkdir /mnt/etc/sudoers.d<enter>",
+      "cat <<EOS > /mnt/etc/sudoers.d/vagrant<enter>",
+      "Defaults:vagrant !requiretty<enter>",
+      "vagrant ALL=(ALL) NOPASSWD: ALL<enter>",
+      "EOS<enter>",
+      "chmod 440 /mnt/etc/sudoers.d/vagrant<enter>",
+      "reboot<enter>"
+    ],
+    "ssh_wait_timeout": "60m",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo shutdown -h -p now",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/openbsd/base.sh",
+      "scripts/common/vagrant.sh",
+      "scripts/openbsd/cleanup.sh",
+      "scripts/common/minimize.sh"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "output": "openbsd-5.4-amd64.box"
+  }],
+  "variables": {
+    "mirror": "http://ftp.openbsd.org/pub/OpenBSD"
+  }
+}
