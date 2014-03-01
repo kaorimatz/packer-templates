@@ -6,7 +6,9 @@ set -x
 sudo aptitude -y install build-essential
 sudo aptitude -y install dkms
 sudo aptitude -y install linux-vyatta-kbuild
-sudo aptitude -y install xserver-xorg
+
+# Uncomment this if you want to install Guest Additions with support for X
+#sudo aptitude -y install xserver-xorg
 
 sudo ln -s /usr/src/linux-image/debian/build/build-amd64-none-amd64-vyatta "/lib/modules/$(uname -r)/build"
 

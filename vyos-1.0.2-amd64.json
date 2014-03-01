@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://mirror.vyos.net/iso/release/1.0.0/vyos-1.0.0-amd64.iso",
-    "iso_checksum": "ea8e4e23c18977f07a63f79f626c163ae315afa4",
+    "iso_url": "http://mirror.vyos.net/iso/release/1.0.2/vyos-1.0.2-amd64.iso",
+    "iso_checksum": "8ce6c49edd2d9c8d907dc6354748a9c85f587ca0",
     "iso_checksum_type": "sha1",
-    "output_directory": "output-vyos-1.0.0-amd64",
-    "vm_name": "packer-vyos-1.0.0-amd64",
+    "output_directory": "output-vyos-1.0.2-amd64",
+    "vm_name": "packer-vyos-1.0.2-amd64",
     "disk_size": 40000,
     "boot_wait": "5s",
     "boot_command": [
@@ -18,7 +18,7 @@
       "<enter><wait>",
       "<enter><wait>",
       "Yes<enter><wait>",
-      "<enter><wait10><wait10><wait10>",
+      "<enter><wait10><wait10><wait10><wait10><wait10>",
       "<enter><wait>",
       "vagrant<enter><wait>",
       "vagrant<enter><wait>",
@@ -60,11 +60,12 @@
       "scripts/vyos/base.sh",
       "scripts/vyos/virtualbox.sh",
       "scripts/vyos/vagrant.sh",
+      "scripts/vyos/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
-    "output": "vyos-1.0.0-amd64.box"
+    "output": "vyos-1.0.2-amd64.box"
   }]
 }
