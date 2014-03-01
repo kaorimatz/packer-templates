@@ -58,6 +58,7 @@
     "ssh_wait_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
+    "guest_additions_mode": "disable",
     "shutdown_command": "sudo shutdown -h -p now",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "512"],
@@ -69,7 +70,6 @@
     "scripts": [
       "scripts/openbsd/base.sh",
       "scripts/common/vagrant.sh",
-      "scripts/openbsd/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   }],
