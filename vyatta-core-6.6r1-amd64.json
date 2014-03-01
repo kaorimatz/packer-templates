@@ -1,0 +1,71 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "guest_os_type": "Debian_64",
+    "iso_url": "http://packages.vyatta.com/vyatta/iso/VC6.6/vyatta-livecd_VC6.6R1_amd64.iso",
+    "iso_checksum": "f0a9c5efa369adc599e6077a2ab7e4bc",
+    "iso_checksum_type": "md5",
+    "output_directory": "output-vyatta-core-6.6r1-amd64",
+    "vm_name": "packer-vyatta-core-6.6r1-amd64",
+    "disk_size": 40000,
+    "boot_wait": "5s",
+    "boot_command": [
+      "<enter><wait10><wait10>",
+      "vyatta<enter><wait>",
+      "vyatta<enter><wait>",
+      "install system<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "<enter><wait>",
+      "Yes<enter><wait>",
+      "<enter><wait10><wait10><wait10><wait10><wait10>",
+      "<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<enter><wait10>",
+      "reboot<enter><wait>",
+      "Yes<enter><wait10><wait10><wait10>",
+      "vyatta<enter><wait>",
+      "vagrant<enter><wait>",
+      "configure<enter><wait>",
+      "set interfaces ethernet eth0 address dhcp<enter><wait>",
+      "delete system console<enter><wait>",
+      "set system login user vagrant authentication plaintext-password vagrant<enter><wait>",
+      "set system login user vagrant level admin<enter><wait>",
+      "commit<enter><wait>",
+      "save<enter><wait>",
+      "exit<enter><wait>",
+      "exit<enter><wait>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "configure<enter><wait>",
+      "delete system login user vyatta<enter><wait>",
+      "set service ssh<enter><wait>",
+      "commit<enter><wait>",
+      "save<enter><wait>",
+      "exit<enter><wait>"
+    ],
+    "shutdown_command": "sudo poweroff",
+    "ssh_wait_timeout": "20m",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/vyatta-core/base.sh",
+      "scripts/vyatta-core/virtualbox.sh",
+      "scripts/vyatta-core/vagrant.sh",
+      "scripts/vyatta-core/cleanup.sh",
+      "scripts/common/minimize.sh"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "output": "vyatta-core-6.6r1-amd64.box"
+  }]
+}
