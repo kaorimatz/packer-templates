@@ -5,10 +5,10 @@ set -x
 
 sudo pacman -S --noconfirm virtualbox-guest-utils
 
-sudo tee /etc/modules-load.d/virtualbox.conf <<EOS
+sudo tee /etc/modules-load.d/virtualbox.conf <<EOF
 vboxguest
 vboxsf
 vboxvideo
-EOS
+EOF
 
 sudo systemctl enable vboxservice

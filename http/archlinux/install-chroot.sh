@@ -16,10 +16,10 @@ mkinitcpio -p linux
 echo -e 'vagrant\nvagrant' | passwd
 useradd -m -U vagrant
 echo -e 'vagrant\nvagrant' | passwd vagrant
-cat <<EOS > /etc/sudoers.d/vagrant
+cat <<EOF > /etc/sudoers.d/vagrant
 Defaults:vagrant !requiretty
 vagrant ALL=(ALL) NOPASSWD: ALL
-EOS
+EOF
 chmod 440 /etc/sudoers.d/vagrant
 
 ln -sf /dev/null /etc/udev/rules.d/80-net-name-slot.rules
