@@ -7,7 +7,7 @@
     "iso_checksum_type": "sha1",
     "output_directory": "output-vyos-1.0.2-amd64",
     "vm_name": "packer-vyos-1.0.2-amd64",
-    "disk_size": 40000,
+    "disk_size": "{{user `disk_size`}}",
     "boot_wait": "5s",
     "boot_command": [
       "<enter><wait10><wait10>",
@@ -67,5 +67,8 @@
   "post-processors": [{
     "type": "vagrant",
     "output": "vyos-1.0.2-amd64.box"
-  }]
+  }],
+  "variables": {
+    "disk_size": 40000
+  }
 }

@@ -7,7 +7,7 @@
     "iso_checksum_type": "sha256",
     "output_directory": "output-centos-6.5-x86_64",
     "vm_name": "packer-centos-6.5-x86_64",
-    "disk_size": 40000,
+    "disk_size": "{{user `disk_size`}}",
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
@@ -40,6 +40,7 @@
     "output": "centos-6.5-x86_64.box"
   }],
   "variables": {
+    "disk_size": 40000,
     "mirror": "http://mirrors.kernel.org/centos"
   }
 }

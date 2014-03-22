@@ -7,7 +7,7 @@
     "iso_checksum_type": "sha256",
     "output_directory": "output-openbsd-5.4-amd64",
     "vm_name": "packer-openbsd-5.4-amd64",
-    "disk_size": 40000,
+    "disk_size": "{{user `disk_size`}}",
     "http_directory": "http",
     "boot_wait": "15s",
     "boot_command": [
@@ -78,6 +78,7 @@
     "output": "openbsd-5.4-amd64.box"
   }],
   "variables": {
+    "disk_size": 40000,
     "mirror": "http://ftp.openbsd.org/pub/OpenBSD"
   }
 }

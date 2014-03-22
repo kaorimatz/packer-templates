@@ -7,7 +7,7 @@
     "iso_checksum_type": "sha1",
     "output_directory": "output-omnios-r151008j",
     "vm_name": "packer-omnios-r151008j",
-    "disk_size": 40000,
+    "disk_size": "{{user `disk_size`}}",
     "http_directory": "http",
     "boot_wait": "30s",
     "boot_command": [
@@ -65,6 +65,10 @@
   }],
   "post-processors": [{
     "type": "vagrant",
+    "compression_level": 9,
     "output": "omnios-r151008j.box"
-  }]
+  }],
+  "variables": {
+    "disk_size": 40000
+  }
 }

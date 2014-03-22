@@ -7,7 +7,7 @@
     "iso_checksum_type": "sha256",
     "output_directory": "output-debian-6.0.8-amd64",
     "vm_name": "packer-debian-6.0.8-amd64",
-    "disk_size": 40000,
+    "disk_size": "{{user `disk_size`}}",
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
@@ -38,5 +38,8 @@
   "post-processors": [{
     "type": "vagrant",
     "output": "debian-6.0.8-amd64.box"
-  }]
+  }],
+  "variables": {
+    "disk_size": 40000
+  }
 }
