@@ -47,7 +47,7 @@
       "exit<enter><wait>"
     ],
     "shutdown_command": "sudo poweroff",
-    "ssh_wait_timeout": "20m",
+    "ssh_wait_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "vboxmanage": [
