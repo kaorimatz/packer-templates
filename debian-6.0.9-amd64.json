@@ -2,18 +2,18 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.8/amd64/iso-cd/debian-6.0.8-amd64-netinst.iso",
-    "iso_checksum": "9f86a05fea0d98441895584e91f8bfaaaa8e4d9421f0c9e52332616c60e1887c",
+    "iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.9/amd64/iso-cd/debian-6.0.9-amd64-netinst.iso",
+    "iso_checksum": "6d66c90c0d554801f537a794c4b778ef549efd9d4c7d68b893846c647f257e21",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-debian-6.0.8-amd64",
-    "vm_name": "packer-debian-6.0.8-amd64",
+    "output_directory": "output-debian-6.0.9-amd64",
+    "vm_name": "packer-debian-6.0.9-amd64",
     "disk_size": "{{user `disk_size`}}",
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
       "<esc><wait>",
       "auto ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-6.0.8/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-6.0.9/preseed.cfg ",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -37,7 +37,7 @@
   }],
   "post-processors": [{
     "type": "vagrant",
-    "output": "debian-6.0.8-amd64.box"
+    "output": "debian-6.0.9-amd64.box"
   }],
   "variables": {
     "disk_size": 40000
