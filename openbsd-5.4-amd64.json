@@ -8,6 +8,7 @@
     "output_directory": "output-openbsd-5.4-amd64",
     "vm_name": "packer-openbsd-5.4-amd64",
     "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
     "http_directory": "http",
     "boot_wait": "15s",
     "boot_command": [
@@ -79,6 +80,7 @@
   }],
   "variables": {
     "disk_size": 40000,
+    "headless": false,
     "mirror": "http://ftp.openbsd.org/pub/OpenBSD"
   }
 }

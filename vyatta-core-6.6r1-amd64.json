@@ -8,6 +8,7 @@
     "output_directory": "output-vyatta-core-6.6r1-amd64",
     "vm_name": "packer-vyatta-core-6.6r1-amd64",
     "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
     "boot_wait": "5s",
     "boot_command": [
       "<enter><wait10><wait10>",
@@ -69,6 +70,7 @@
     "output": "vyatta-core-6.6r1-amd64.box"
   }],
   "variables": {
-    "disk_size": 40000
+    "disk_size": 40000,
+    "headless": false
   }
 }

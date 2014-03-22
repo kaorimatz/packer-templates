@@ -8,6 +8,7 @@
     "output_directory": "output-freebsd-10.0-amd64",
     "vm_name": "packer-freebsd-10.0-amd64",
     "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
     "http_directory": "http",
     "boot_wait": "15s",
     "boot_command": [
@@ -45,6 +46,7 @@
   }],
   "variables": {
     "disk_size": 40000,
+    "headless": false,
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
   }
 }

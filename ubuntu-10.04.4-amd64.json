@@ -8,6 +8,7 @@
     "output_directory": "output-ubuntu-10.04.4-amd64",
     "vm_name": "packer-ubuntu-10.04.4-amd64",
     "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
@@ -44,6 +45,7 @@
     "output": "ubuntu-10.04.4-amd64.box"
   }],
   "variables": {
-    "disk_size": 40000
+    "disk_size": 40000,
+    "headless": false
   }
 }
