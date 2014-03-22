@@ -1,6 +1,6 @@
 # packer-templates
 
-[![Build Status](https://travis-ci.org/kaorimatz/packer-templates.png?branch=master)](https://travis-ci.org/kaorimatz/packer-templates)
+[![Build Status](https://travis-ci.org/kaorimatz/packer-templates.svg?branch=master)](https://travis-ci.org/kaorimatz/packer-templates)
 
 Templates for [Packer](http://www.packer.io/)
 
