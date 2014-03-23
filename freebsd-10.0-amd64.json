@@ -42,9 +42,11 @@
   }],
   "post-processors": [{
     "type": "vagrant",
+    "compression_level": "{{user `compression_level`}}",
     "output": "freebsd-10.0-amd64.box"
   }],
   "variables": {
+    "compression_level": 1,
     "disk_size": 40000,
     "headless": false,
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD"

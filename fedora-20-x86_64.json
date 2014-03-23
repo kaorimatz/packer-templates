@@ -37,9 +37,11 @@
   }],
   "post-processors": [{
     "type": "vagrant",
+    "compression_level": "{{user `compression_level`}}",
     "output": "fedora-20-x86_64.box"
   }],
   "variables": {
+    "compression_level": 1,
     "disk_size": 40000,
     "headless": false
   }
