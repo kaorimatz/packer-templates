@@ -22,7 +22,8 @@ vagrant ALL=(ALL) NOPASSWD: ALL
 EOF
 chmod 440 /etc/sudoers.d/vagrant
 
-ln -sf /dev/null /etc/udev/rules.d/80-net-name-slot.rules
+mkdir -p /etc/systemd/network
+ln -sf /dev/null /etc/systemd/network/99-default.link
 
 systemctl enable sshd
 systemctl enable dhcpcd@eth0
