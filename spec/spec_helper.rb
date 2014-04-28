@@ -15,7 +15,7 @@ RSpec.configure do |config|
     elsif match = /User (.*)/.match(line)
       user = match[1]
     elsif match = /IdentityFile (.*)/.match(line)
-      options[:keys] = [match[1].gsub(/"/,'')]
+      options[:keys] = [match[1].gsub(/"/, '')]
     elsif match = /Port (.*)/.match(line)
       options[:port] = match[1]
     end

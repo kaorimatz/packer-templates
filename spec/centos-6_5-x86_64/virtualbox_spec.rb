@@ -16,3 +16,7 @@ describe default_gateway do
   its(:ipaddress) { should eq '10.0.2.2' }
   its(:interface) { should eq 'eth0' }
 end
+
+describe service('dkms_autoinstaller') do
+  it { should be_enabled }
+end
