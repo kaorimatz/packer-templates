@@ -1,6 +1,6 @@
 lauguage: ruby
 rvm:
-  - 2.1.0
+  - 2.1
 install:
   - bundle install
   - curl -L -o packer.zip http://downloads.packer.io/v/0.5.2/linux/amd64 && unzip -d bin packer.zip
