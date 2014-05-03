@@ -12,7 +12,7 @@ Vagrant.configure('2') do |config|
   config.vm.define 'freebsd-10_0-amd64' do |c|
     c.vm.synced_folder '', '/vagrant', disabled: true
   end
-  config.vm.define 'openbsd-5_4-amd64' do |c|
+  config.vm.define 'openbsd-5_5-amd64' do |c|
     c.vm.synced_folder '', '/vagrant', disabled: true
   end
 end

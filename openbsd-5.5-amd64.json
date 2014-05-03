@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "OpenBSD_64",
-    "iso_url": "{{user `mirror`}}/5.4/amd64/cd54.iso",
-    "iso_checksum": "03124d2e38b9ac04d77be681c9c723dffb2cdd6b0688f823834c4ce1ceaa93b2",
+    "iso_url": "{{user `mirror`}}/5.5/amd64/cd55.iso",
+    "iso_checksum": "5fae0fb4ea2c98cfdd0ea0bd8d7ba5b26f2d8608a3a355304c5e49fe08ad6999",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-openbsd-5.4-amd64",
-    "vm_name": "packer-openbsd-5.4-amd64",
+    "output_directory": "output-openbsd-5.5-amd64",
+    "vm_name": "packer-openbsd-5.5-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -77,7 +77,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "openbsd-5.4-amd64.box"
+    "output": "openbsd-5.5-amd64.box"
   }],
   "variables": {
     "compression_level": 1,
