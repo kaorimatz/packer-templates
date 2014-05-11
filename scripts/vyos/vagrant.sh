@@ -7,7 +7,7 @@ WRAPPER=/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper
 
 date | sudo tee /etc/vagrant_box_build_time
 
-PUBLIC_KEY=$(curl -sL 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub')
+PUBLIC_KEY=$(curl -fsSL 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub')
 KEY_TYPE=$(echo "$PUBLIC_KEY" | awk '{print $1}')
 KEY=$(echo "$PUBLIC_KEY" | awk '{print $2}')
 $WRAPPER begin
