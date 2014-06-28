@@ -36,7 +36,7 @@
       "commit<enter><wait>",
       "save<enter><wait>",
       "exit<enter><wait>",
-      "exit<enter><wait>",
+      "exit<enter><wait5>",
       "vagrant<enter><wait>",
       "vagrant<enter><wait>",
       "configure<enter><wait>",
