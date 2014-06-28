@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://mirror.vyos.net/iso/release/1.0.2/vyos-1.0.2-amd64.iso",
-    "iso_checksum": "8ce6c49edd2d9c8d907dc6354748a9c85f587ca0",
+    "iso_url": "http://mirror.vyos.net/iso/release/1.0.4/vyos-1.0.4-amd64.iso",
+    "iso_checksum": "cd521c1b7f8cca3cb2c467f8b7d1e638770fafb9",
     "iso_checksum_type": "sha1",
-    "output_directory": "output-vyos-1.0.2-amd64",
-    "vm_name": "packer-vyos-1.0.2-amd64",
+    "output_directory": "output-vyos-1.0.4-amd64",
+    "vm_name": "packer-vyos-1.0.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "boot_wait": "5s",
@@ -68,7 +68,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "vyos-1.0.2-amd64.box"
+    "output": "vyos-1.0.4-amd64.box"
   }],
   "variables": {
     "compression_level": 1,
