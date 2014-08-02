@@ -32,6 +32,7 @@
       "scripts/debian/base.sh",
       "scripts/debian/virtualbox.sh",
       "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/debian/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

@@ -36,6 +36,7 @@
       "scripts/freebsd/base.sh",
       "scripts/freebsd/virtualbox.sh",
       "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/freebsd/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

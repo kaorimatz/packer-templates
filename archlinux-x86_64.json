@@ -31,6 +31,7 @@
     "scripts": [
       "scripts/archlinux/virtualbox.sh",
       "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/archlinux/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

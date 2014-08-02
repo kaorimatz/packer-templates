@@ -61,6 +61,7 @@
       "scripts/vyos/base.sh",
       "scripts/vyos/virtualbox.sh",
       "scripts/vyos/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/vyos/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

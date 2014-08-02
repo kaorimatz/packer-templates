@@ -61,6 +61,7 @@
       "scripts/vyatta-core/base.sh",
       "scripts/vyatta-core/virtualbox.sh",
       "scripts/vyatta-core/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/vyatta-core/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

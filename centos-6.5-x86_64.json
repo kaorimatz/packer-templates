@@ -32,6 +32,7 @@
       "scripts/centos-6.5/base.sh",
       "scripts/centos/virtualbox.sh",
       "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
       "scripts/centos-6.5/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
