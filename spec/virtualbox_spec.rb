@@ -17,6 +17,18 @@ describe default_gateway do
   its(:interface) { should eq 'eth0' }
 end
 
-describe service('dkms_autoinstaller') do
+def dkms
+  if os[:family] == 'fedora' && os[:release].to_i < 20
+    'dkms_autoinstaller'
+  elsif os[:family] == 'fedora'
+    'dkms'
+  elsif os[:family] == 'redhat'
+    'dkms_autoinstaller'
+  else
+    nil
+  end
+end
+
+describe service(dkms), if: dkms do
   it { should be_enabled }
 end
