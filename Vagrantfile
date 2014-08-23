@@ -4,9 +4,10 @@ Vagrant.configure('2') do |config|
     host = name.gsub(/[.]/, '_')
     config.vm.define host do |c|
       c.vm.box = name
-      config.vm.provider :virtualbox do |vbox|
+      c.vm.provider :virtualbox do |vbox|
         vbox.name = name
       end
+      c.vm.network :private_network, ip: '192.168.0.100'
     end
   end
   config.vm.define 'freebsd-10_0-amd64' do |c|
