@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe command('date +%Z') do
-  it { should return_stdout 'UTC' }
+  its(:stdout) { should match /UTC/ }
 end

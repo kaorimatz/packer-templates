@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     rainbow (2.0.0)
     rake (10.3.2)
@@ -9,22 +11,23 @@ GEM
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
       rspec-mocks (~> 3.0.0)
-    rspec-core (3.0.3)
+    rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
-    rspec-expectations (3.0.3)
+    rspec-expectations (3.0.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.0.0)
     rspec-its (1.0.1)
       rspec-core (>= 2.99.0.beta1)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-mocks (3.0.3)
+    rspec-mocks (3.0.4)
       rspec-support (~> 3.0.0)
-    rspec-support (3.0.3)
-    serverspec (2.0.0.beta16)
+    rspec-support (3.0.4)
+    serverspec (2.0.0.beta20)
       rspec (~> 3.0.0)
       rspec-its
-      specinfra (~> 2.0.0.beta16)
-    specinfra (2.0.0.beta16)
+      specinfra (~> 2.0.0.beta30)
+    specinfra (2.0.0.beta39)
+      net-scp
       net-ssh
 
 PLATFORMS
