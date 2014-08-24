@@ -26,8 +26,8 @@
     "guest_additions_mode": "disable",
     "shutdown_command": "sudo poweroff",
     "vboxmanage": [
-      ["modifyvm", "{{.Name}}", "--memory", "512"],
-      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
     ]
   }],
   "provisioners": [{
@@ -48,8 +48,10 @@
   }],
   "variables": {
     "compression_level": 1,
+    "cpus": "1",
     "disk_size": 40000,
     "headless": false,
+    "memory": "512",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
   }
 }

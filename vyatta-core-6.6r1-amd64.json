@@ -51,8 +51,8 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "vboxmanage": [
-      ["modifyvm", "{{.Name}}", "--memory", "512"],
-      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
     ]
   }],
   "provisioners": [{
@@ -73,7 +73,9 @@
   }],
   "variables": {
     "compression_level": 1,
+    "cpus": "1",
     "disk_size": 40000,
-    "headless": false
+    "headless": false,
+    "memory": "512"
   }
 }
