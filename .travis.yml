@@ -3,6 +3,6 @@ rvm:
   - 2.1
 install:
   - bundle install
-  - curl -L -o packer.zip http://downloads.packer.io/v/0.6.1/linux/amd64 && unzip -d bin packer.zip
+  - curl -L -o packer.zip http://downloads.packer.io/v/0.7.1/linux/amd64 && unzip -d bin packer.zip
 script:
   - PATH=$(pwd)/bin:$PATH bundle exec rake
