@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/12.04.4/ubuntu-12.04.4-server-amd64.iso",
-    "iso_checksum": "3aeb42816253355394897ae80d99a9ba56217c0e98e05294b51f0f5b13bceb54",
+    "iso_url": "http://releases.ubuntu.com/12.04.5/ubuntu-12.04.5-server-amd64.iso",
+    "iso_checksum": "af224223de99e2a730b67d7785b657f549be0d63221188e105445f75fb8305c9",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-ubuntu-12.04.4-amd64",
-    "vm_name": "packer-ubuntu-12.04.4-amd64",
+    "output_directory": "output-ubuntu-12.04.5-amd64",
+    "vm_name": "packer-ubuntu-12.04.5-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -18,7 +18,7 @@
       "install ",
       "auto-install/enable=true ",
       "debconf/priority=critical ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-12.04.4/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-12.04.5/preseed.cfg ",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -44,7 +44,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "ubuntu-12.04.4-amd64.box"
+    "output": "ubuntu-12.04.5-amd64.box"
   }],
   "variables": {
     "compression_level": 1,
