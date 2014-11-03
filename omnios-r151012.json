@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "OpenSolaris_64",
-    "iso_url": "http://omnios.omniti.com/media/OmniOS_Text_r151010j.iso",
-    "iso_checksum": "bc3f4c0d29a5da75174de62da00294e5ef826b5e",
+    "iso_url": "http://omnios.omniti.com/media/OmniOS_Text_r151012.iso",
+    "iso_checksum": "683bffa430d540888c9002d3be4259ca71e49f49",
     "iso_checksum_type": "sha1",
-    "output_directory": "output-omnios-r151010",
-    "vm_name": "packer-omnios-r151010",
+    "output_directory": "output-omnios-r151012",
+    "vm_name": "packer-omnios-r151012",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -20,6 +20,9 @@
       "<bs><bs><bs><bs><bs><bs><bs>omnios<f2><wait>",
       "<f2><wait>",
       "<f2><wait>",
+      "<wait10><wait10><wait10><wait10><wait10><wait10>",
+      "<wait10><wait10><wait10><wait10><wait10><wait10>",
+      "<wait10><wait10><wait10><wait10><wait10><wait10>",
       "<wait10><wait10><wait10><wait10><wait10><wait10>",
       "<wait10><wait10><wait10><wait10><wait10><wait10>",
       "<wait10><wait10><wait10><wait10><wait10><wait10>",
@@ -61,14 +64,13 @@
     "scripts": [
       "scripts/omnios/virtualbox.sh",
       "scripts/common/vagrant.sh",
-      "scripts/common/sshd.sh",
       "scripts/common/minimize.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "omnios-r151010.box"
+    "output": "omnios-r151012.box"
   }],
   "variables": {
     "compression_level": 1,
