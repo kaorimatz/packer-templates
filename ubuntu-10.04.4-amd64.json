@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/10.04.4/ubuntu-10.04.4-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/10.04.4/ubuntu-10.04.4-server-amd64.iso",
     "iso_checksum": "3de19967318906fd57252ef67ed3ad411b89e3ea6b81205e26517530d7a8cd0b",
     "iso_checksum_type": "sha256",
     "output_directory": "output-ubuntu-10.04.4-amd64",
@@ -51,6 +51,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://releases.ubuntu.com"
   }
 }

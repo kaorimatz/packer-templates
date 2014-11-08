@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://mirror.vyos.net/iso/release/1.1.0/vyos-1.1.0-amd64.iso",
+    "iso_url": "{{user `mirror`}}/iso/release/1.1.0/vyos-1.1.0-amd64.iso",
     "iso_checksum": "e29dd2e21c005bbb919f75387ecdf6c8d5b96186",
     "iso_checksum_type": "sha1",
     "output_directory": "output-vyos-1.1.0-amd64",
@@ -75,6 +75,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://mirror.vyos.net"
   }
 }

@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "OpenSolaris_64",
-    "iso_url": "http://omnios.omniti.com/media/OmniOS_Text_r151012.iso",
+    "iso_url": "{{user `mirror`}}/OmniOS_Text_r151012.iso",
     "iso_checksum": "683bffa430d540888c9002d3be4259ca71e49f49",
     "iso_checksum_type": "sha1",
     "output_directory": "output-omnios-r151012",
@@ -77,6 +77,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://omnios.omniti.com/media"
   }
 }

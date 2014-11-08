@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/14.10/ubuntu-14.10-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/14.10/ubuntu-14.10-server-amd64.iso",
     "iso_checksum": "f79edea19575e2cabb5ff9aeca787ea821fcfdbf81ce89823c26b020d9940956",
     "iso_checksum_type": "sha256",
     "output_directory": "output-ubuntu-14.10-amd64",
@@ -53,6 +53,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://releases.ubuntu.com"
   }
 }

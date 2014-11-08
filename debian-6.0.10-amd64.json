@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/6.0.10/amd64/iso-cd/debian-6.0.10-amd64-netinst.iso",
     "iso_checksum": "e7563ecea95e1352f0c36cc2fcac1a3bb13ce11715e5c4c9712ff4f05128f896",
     "iso_checksum_type": "sha256",
     "output_directory": "output-debian-6.0.10-amd64",
@@ -47,6 +47,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://cdimage.debian.org/cdimage/archive"
   }
 }

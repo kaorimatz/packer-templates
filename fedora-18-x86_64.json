@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Fedora_64",
-    "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/18/Fedora/x86_64/iso/Fedora-18-x86_64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/releases/18/Fedora/x86_64/iso/Fedora-18-x86_64-netinst.iso",
     "iso_checksum": "df219f559311d255f7de7bff0bc8102e57b5352f3f6ecbeb8d583c2f780be449",
     "iso_checksum_type": "sha256",
     "output_directory": "output-fedora-18-x86_64",
@@ -46,6 +46,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://archives.fedoraproject.org/pub/archive/fedora/linux"
   }
 }

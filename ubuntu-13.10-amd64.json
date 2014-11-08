@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/13.10/ubuntu-13.10-server-amd64.iso",
     "iso_checksum": "2bead0f1f451734461ff88f913f4b02ba9e873b15f097a5c231bdb3763ea42e3",
     "iso_checksum_type": "sha256",
     "output_directory": "output-ubuntu-13.10-amd64",
@@ -52,6 +52,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://releases.ubuntu.com"
   }
 }

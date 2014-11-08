@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/12.10/ubuntu-12.10-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/12.10/ubuntu-12.10-server-amd64.iso",
     "iso_checksum": "a80e87f21a6744e9ad744716d5b3b4bea509c861b597d699407b96de5d7e18af",
     "iso_checksum_type": "sha256",
     "output_directory": "output-ubuntu-12.10-amd64",
@@ -51,6 +51,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://releases.ubuntu.com"
   }
 }

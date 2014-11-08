@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "http://releases.ubuntu.com/12.04.5/ubuntu-12.04.5-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/12.04.5/ubuntu-12.04.5-server-amd64.iso",
     "iso_checksum": "af224223de99e2a730b67d7785b657f549be0d63221188e105445f75fb8305c9",
     "iso_checksum_type": "sha256",
     "output_directory": "output-ubuntu-12.04.5-amd64",
@@ -51,6 +51,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://releases.ubuntu.com"
   }
 }

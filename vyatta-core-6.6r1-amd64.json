@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "http://packages.vyatta.com/vyatta/iso/VC6.6/vyatta-livecd_VC6.6R1_amd64.iso",
+    "iso_url": "{{user `mirror`}}/VC6.6/vyatta-livecd_VC6.6R1_amd64.iso",
     "iso_checksum": "f0a9c5efa369adc599e6077a2ab7e4bc",
     "iso_checksum_type": "md5",
     "output_directory": "output-vyatta-core-6.6r1-amd64",
@@ -76,6 +76,7 @@
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
-    "memory": "512"
+    "memory": "512",
+    "mirror": "http://packages.vyatta.com/vyatta/iso"
   }
 }
