@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
-    "iso_url": "{{user `mirror`}}/5.10/isos/x86_64/CentOS-5.10-x86_64-netinstall.iso",
-    "iso_checksum": "87cdf657f3c1c0fdb77189f533d3df79bf0e36e6a797c2c145c61a00a0c6d0a2",
+    "iso_url": "{{user `mirror`}}/5.11/isos/x86_64/CentOS-5.11-x86_64-netinstall.iso",
+    "iso_checksum": "9729c04a8a3ba57ed4e34ee5b96522879e6a3bcbf5582c3b6bcfd02bcfbacf8c",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-centos-5.10-x86_64",
-    "vm_name": "packer-centos-5.10-x86_64",
+    "output_directory": "output-centos-5.11-x86_64",
+    "vm_name": "packer-centos-5.11-x86_64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,7 +14,7 @@
     "boot_command": [
       "<esc>",
       "<wait>",
-      "linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-5.10/anaconda-ks.cfg",
+      "linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-5.11/anaconda-ks.cfg",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -29,18 +29,18 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/centos-5.10/base.sh",
+      "scripts/centos-5.11/base.sh",
       "scripts/centos/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/centos-5.10/cleanup.sh",
+      "scripts/centos-5.11/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "centos-5.10-x86_64.box"
+    "output": "centos-5.11-x86_64.box"
   }],
   "variables": {
     "compression_level": 6,
