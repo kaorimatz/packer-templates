@@ -73,7 +73,7 @@
     "output": "omnios-r151012.box"
   }],
   "variables": {
-    "compression_level": 1,
+    "compression_level": 6,
     "cpus": "1",
     "disk_size": 40000,
     "headless": false,
