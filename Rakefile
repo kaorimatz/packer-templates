@@ -27,10 +27,11 @@ namespace :packer do
       json['builders'].each do |builder|
         iso_url = builder['iso_url'].sub('{{user `mirror`}}', mirror)
         puts Rainbow("Checking if #{iso_url} is available...").green
-        response = request_head(iso_url)
-        unless response.is_a? Net::HTTPSuccess
-          puts Rainbow("#{iso_url} is not available: HEAD #{response.uri} => #{response.message}").red
-          fail "#{iso_url} is not available"
+        request_head(iso_url) do |response|
+          unless available?(response)
+            puts Rainbow("#{iso_url} is not available: #{response.message}").red
+            fail "#{iso_url} is not available"
+          end
         end
       end
     end
@@ -49,15 +50,13 @@ namespace :spec do
   end
 end
 
-def request_head(uri)
+def request_head(uri, &block)
   uri = URI(uri)
-  response = Net::HTTP.start(uri.host, uri.port) { |http| http.head(uri) }
-  case response
-  when Net::HTTPSuccess then
-    response
-  when Net::HTTPRedirection then
-    request_head(response['location'])
-  else
-    response
+  Net::HTTP.start(uri.host, uri.port) do |http|
+    http.request_head(uri, &block)
   end
+end
+
+def available?(response)
+  response.is_a?(Net::HTTPSuccess) || response.is_a?(Net::HTTPRedirection)
 end
