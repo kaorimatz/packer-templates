@@ -2,22 +2,21 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "FreeBSD_64",
-    "iso_url": "{{user `mirror`}}/releases/amd64/amd64/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-disc1.iso",
-    "iso_checksum": "9c377b4a4e63443c0b210080694de26133e6a276eddb07c7e00e1c9aebd84109",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso",
+    "iso_checksum": "0c3d64ce48c3ef761761d0fea07e1935e296f8c045c249118bc91a7faf053a6b",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-freebsd-10.0-amd64",
-    "vm_name": "packer-freebsd-10.0-amd64",
+    "output_directory": "output-freebsd-10.1-amd64",
+    "vm_name": "packer-freebsd-10.1-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
-    "boot_wait": "15s",
+    "boot_wait": "10s",
     "boot_command": [
-      "<esc><wait>",
-      "boot -s<enter><wait10>",
+      "2<enter><wait10>",
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
-      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.0/installerconfig<enter><wait>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.1/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -44,7 +43,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "freebsd-10.0-amd64.box"
+    "output": "freebsd-10.1-amd64.box"
   }],
   "variables": {
     "compression_level": 6,

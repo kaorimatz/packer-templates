@@ -5,7 +5,7 @@ cat <<EOF > /etc/resolv.conf
 nameserver 8.8.8.8
 EOF
 
-ASSUME_ALWAYS_YES=1 pkg install sudo curl
+ASSUME_ALWAYS_YES=yes pkg install sudo curl
 
 cat <<EOF > /etc/rc.conf
 ifconfig_em0="DHCP"
