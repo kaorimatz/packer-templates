@@ -50,7 +50,8 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "openbsd-5.6-amd64.box"
+    "output": "openbsd-5.6-amd64.box",
+    "vagrantfile_template": "vagrantfile_templates/openbsd.rb"
   }],
   "variables": {
     "compression_level": 6,
