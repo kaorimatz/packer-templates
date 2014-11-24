@@ -43,7 +43,8 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "freebsd-10.1-amd64.box"
+    "output": "freebsd-10.1-amd64.box",
+    "vagrantfile_template": "vagrantfile_templates/freebsd.rb"
   }],
   "variables": {
     "compression_level": 6,
