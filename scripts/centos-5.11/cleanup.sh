@@ -3,5 +3,5 @@
 set -e
 set -x
 
-sudo yum clean all
+sudo yum --enablerepo=epel clean all
 sudo tee /var/log/yum.log < /dev/null
