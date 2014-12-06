@@ -3,7 +3,9 @@
 set -e
 set -x
 
+sudo yum -y install bzip2
 sudo yum -y --enablerepo=epel install dkms
+sudo yum -y install kernel-devel
 sudo yum -y install make
 sudo yum -y install perl
 
