@@ -29,7 +29,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/debian/base.sh",
+      "scripts/debian/init.sh",
       "scripts/debian/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",

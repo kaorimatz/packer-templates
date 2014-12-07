@@ -57,7 +57,8 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/vyos/base.sh",
+      "scripts/vyos/repo.sh",
+      "scripts/vyos/init.sh",
       "scripts/vyos/virtualbox.sh",
       "scripts/vyos/vagrant.sh",
       "scripts/common/sshd.sh",

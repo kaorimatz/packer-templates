@@ -11,5 +11,3 @@ curl -L -O https://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4
 sudo yum -y install epel-release-5-4.noarch.rpm
 rm epel-release-5-4.noarch.rpm
 sudo sed -i -e 's/^enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
-
-sudo sed -i -e 's,^.*:/sbin/mingetty\s\+tty[2-6],#\0,' /etc/inittab

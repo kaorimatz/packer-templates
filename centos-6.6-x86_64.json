@@ -29,7 +29,8 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/centos-6.6/base.sh",
+      "scripts/centos-6.6/repo.sh",
+      "scripts/centos-6.6/init.sh",
       "scripts/centos/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",

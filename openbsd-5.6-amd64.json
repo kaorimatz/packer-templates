@@ -41,7 +41,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/openbsd/base.sh",
+      "scripts/openbsd/init.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/common/minimize.sh"

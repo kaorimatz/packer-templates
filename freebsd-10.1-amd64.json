@@ -32,7 +32,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/freebsd/base.sh",
+      "scripts/freebsd/init.sh",
       "scripts/freebsd/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
