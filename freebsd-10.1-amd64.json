@@ -12,7 +12,7 @@
     "http_directory": "http",
     "boot_wait": "10s",
     "boot_command": [
-      "2<enter><wait10>",
+      "2<enter><wait10><wait10>",
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
