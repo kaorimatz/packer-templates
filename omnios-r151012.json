@@ -64,7 +64,7 @@
     "scripts": [
       "scripts/omnios/virtualbox.sh",
       "scripts/common/vagrant.sh",
-      "scripts/common/minimize.sh"
+      "scripts/omnios/minimize.sh"
     ]
   }],
   "post-processors": [{
