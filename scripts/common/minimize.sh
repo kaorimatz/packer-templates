@@ -7,8 +7,8 @@ dd if=/dev/zero of=EMPTY bs=1M || :
 rm EMPTY
 
 # In CentOS 7, blkid returns duplicate devices
-swap_device_uuid=`/sbin/blkid -t TYPE=swap -o value -s UUID | uniq`
-swap_device_label=`/sbin/blkid -t TYPE=swap -o value -s LABEL | uniq`
+swap_device_uuid=`sudo /sbin/blkid -t TYPE=swap -o value -s UUID | uniq`
+swap_device_label=`sudo /sbin/blkid -t TYPE=swap -o value -s LABEL | uniq`
 if [ -n "$swap_device_uuid" ]; then
   swap_device=`readlink -f /dev/disk/by-uuid/"$swap_device_uuid"`
 elif [ -n "$swap_device_label" ]; then
