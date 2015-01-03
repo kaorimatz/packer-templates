@@ -31,14 +31,3 @@ describe file('/vagrant') do
   it { should be_owned_by 'vagrant' }
   it { should be_grouped_into 'vagrant' }
 end
-
-describe file('/vagrant-nfs') do
-  it { should be_mounted.with type: 'nfs' }
-  it { should be_directory }
-end
-
-describe file('/vagrant-rsync') do
-  it { should be_directory }
-  it { should be_owned_by 'vagrant' }
-  it { should be_grouped_into 'vagrant' }
-end
