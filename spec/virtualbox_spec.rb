@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe kernel_module('vboxsf') do
+describe kernel_module('vboxsf'), unless: %w(freebsd openbsd).include?(os[:family]) do
   it { should be_loaded }
 end
 
-describe kernel_module('vboxguest') do
+describe kernel_module('vboxguest'), unless: %w(freebsd openbsd).include?(os[:family]) do
   it { should be_loaded }
 end
 
@@ -13,8 +13,10 @@ def dkms
     'dkms_autoinstaller'
   elsif os[:family] == 'fedora'
     'dkms'
-  elsif os[:family] == 'redhat'
+  elsif os[:family] == 'redhat' && os[:release].to_i < 7
     'dkms_autoinstaller'
+  elsif os[:family] == 'redhat'
+    'dkms'
   else
     nil
   end

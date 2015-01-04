@@ -1,21 +1,23 @@
 require 'spec_helper'
 
-def openssh
+def ssh_server_package
   case os[:family]
   when 'arch'
     'openssh'
+  when 'solaris'
+    'service/network/ssh'
   else
     'openssh-server'
   end
 end
 
-describe package(openssh) do
+describe package(ssh_server_package) do
   it { should be_installed }
 end
 
 def sshd
   case os[:family]
-  when /(debian|ubuntu)/
+  when /(debian|solaris|ubuntu)/
     'ssh'
   else
     'sshd'
@@ -27,6 +29,6 @@ describe service(sshd) do
   it { should be_running }
 end
 
-describe file('/etc/ssh/sshd_config') do
+describe file('/etc/ssh/sshd_config'), unless: os[:family] == 'solaris' do
   its(:content) { should match /UseDNS no/ }
 end
