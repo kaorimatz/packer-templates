@@ -70,7 +70,8 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "omnios-r151012.box"
+    "output": "omnios-r151012.box",
+    "vagrantfile_template": "vagrantfile_templates/omnios.rb"
   }],
   "variables": {
     "compression_level": 6,
