@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "{{user `mirror`}}/14.04.1/ubuntu-14.04.1-server-amd64.iso",
-    "iso_checksum": "946a6077af6f5f95a51f82fdc44051c7aa19f9cfc5f737954845a6050543d7c2",
+    "iso_url": "{{user `mirror`}}/14.04.2/ubuntu-14.04.2-server-amd64.iso",
+    "iso_checksum": "8acd2f56bfcba2f7ac74a7e4a5e565ce68c024c38525c0285573e41c86ae90c0",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-ubuntu-14.04.1-amd64",
-    "vm_name": "packer-ubuntu-14.04.1-amd64",
+    "output_directory": "output-ubuntu-14.04.2-amd64",
+    "vm_name": "packer-ubuntu-14.04.2-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -15,11 +15,12 @@
       "<esc><wait>",
       "<esc><wait>",
       "<enter><wait>",
-      "install ",
+      "/install/vmlinuz ",
+      "initrd=/install/initrd.gz ",
+      "biosdevname=0 ",
       "auto-install/enable=true ",
       "debconf/priority=critical ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-14.04.1/preseed.cfg ",
-      "biosdevname=0 ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-14.04.2/preseed.cfg ",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -45,7 +46,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "ubuntu-14.04.1-amd64.box"
+    "output": "ubuntu-14.04.2-amd64.box"
   }],
   "variables": {
     "compression_level": 6,
