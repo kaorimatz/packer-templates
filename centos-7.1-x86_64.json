@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
-    "iso_url": "{{user `mirror`}}/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
-    "iso_checksum": "df6dfdd25ebf443ca3375188d0b4b7f92f4153dc910b17bccc886bd54a7b7c86",
+    "iso_url": "{{user `mirror`}}/7.1.1503/isos/x86_64/CentOS-7-x86_64-NetInstall-1503.iso",
+    "iso_checksum": "498bb78789ddc7973fe14358822eb1b48521bbaca91c17bd132c7f8c903d79b3",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-centos-7.0-x86_64",
-    "vm_name": "packer-centos-7.0-x86_64",
+    "output_directory": "output-centos-7.1-x86_64",
+    "vm_name": "packer-centos-7.1-x86_64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,7 +14,7 @@
     "boot_command": [
       "<esc>",
       "<wait>",
-      "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.0/anaconda-ks.cfg biosdevname=0 net.ifnames=0",
+      "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/centos-7.1/anaconda-ks.cfg biosdevname=0 net.ifnames=0",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -29,19 +29,19 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/centos-7.0/repo.sh",
+      "scripts/centos-7.1/repo.sh",
       "scripts/centos/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/centos-7.0/locale.sh",
-      "scripts/centos-7.0/cleanup.sh",
+      "scripts/centos-7.1/locale.sh",
+      "scripts/centos-7.1/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "centos-7.0-x86_64.box"
+    "output": "centos-7.1-x86_64.box"
   }],
   "variables": {
     "compression_level": "6",
@@ -49,6 +49,6 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://archive.kernel.org/centos-vault"
+    "mirror": "http://mirrors.kernel.org/centos"
   }
 }
