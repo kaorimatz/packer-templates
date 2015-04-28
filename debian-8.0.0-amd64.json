@@ -1,0 +1,52 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "guest_os_type": "Debian_64",
+    "iso_url": "{{user `mirror`}}/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
+    "iso_checksum": "63a41c2ebbcfd08e3dede2379037399f3245b71d3b64aa14272c23c0d6c617f7",
+    "iso_checksum_type": "sha256",
+    "output_directory": "output-debian-8.0.0-amd64",
+    "vm_name": "packer-debian-8.0.0-amd64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "5s",
+    "boot_command": [
+      "<esc><wait>",
+      "auto ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-8.0.0/preseed.cfg ",
+      "<enter>"
+    ],
+    "ssh_wait_timeout": "60m",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo poweroff",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/debian/virtualbox.sh",
+      "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
+      "scripts/debian/cleanup.sh",
+      "scripts/common/minimize.sh"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "compression_level": "{{user `compression_level`}}",
+    "output": "debian-8.0.0-amd64.box"
+  }],
+  "variables": {
+    "compression_level": 6,
+    "cpus": "1",
+    "disk_size": 40000,
+    "headless": false,
+    "memory": "512",
+    "mirror": "http://cdimage.debian.org/debian-cd"
+  }
+}
