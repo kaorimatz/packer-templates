@@ -3,5 +3,5 @@
 set -e
 set -x
 
-sudo aptitude -y clean
+sudo apt-get clean
 sudo rm /etc/discover-pkginstall.conf
