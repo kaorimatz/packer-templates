@@ -33,6 +33,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
+      "scripts/ubuntu/apt.sh",
       "scripts/ubuntu/init.sh",
       "scripts/ubuntu/virtualbox.sh",
       "scripts/common/vagrant.sh",
