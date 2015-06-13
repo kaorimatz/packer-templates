@@ -2,8 +2,8 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Fedora_64",
-    "iso_url": "{{user `mirror`}}/releases/test/22_Beta/Server/x86_64/iso/Fedora-Server-netinst-x86_64-22_Beta.iso",
-    "iso_checksum": "a272bdc09e6580fd0572690925cf9e5e9fefe0847834c99a0174f923ab024887",
+    "iso_url": "{{user `mirror`}}/releases/22/Server/x86_64/iso/Fedora-Server-netinst-x86_64-22.iso",
+    "iso_checksum": "9f1f2f19f75cc3b97da41878b5c86188fa8d27ed446bd97d9df615c137c77cfc",
     "iso_checksum_type": "sha256",
     "output_directory": "output-fedora-rawhide-x86_64",
     "vm_name": "packer-fedora-rawhide-x86_64",
