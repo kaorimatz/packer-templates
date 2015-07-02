@@ -44,10 +44,10 @@
     "output": "fedora-22-x86_64.box"
   }],
   "variables": {
-    "compression_level": 6,
+    "compression_level": "6",
     "cpus": "1",
-    "disk_size": 40000,
-    "headless": false,
+    "disk_size": "40000",
+    "headless": "false",
     "memory": "512",
     "mirror": "http://download.fedoraproject.org/pub/fedora/linux"
   }

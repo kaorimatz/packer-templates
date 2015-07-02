@@ -47,10 +47,10 @@
     "vagrantfile_template": "vagrantfile_templates/freebsd.rb"
   }],
   "variables": {
-    "compression_level": 6,
+    "compression_level": "6",
     "cpus": "1",
-    "disk_size": 40000,
-    "headless": false,
+    "disk_size": "40000",
+    "headless": "false",
     "memory": "512",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
   }

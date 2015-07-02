@@ -85,10 +85,10 @@
     "vagrantfile_template": "vagrantfile_templates/omnios.rb"
   }],
   "variables": {
-    "compression_level": 6,
+    "compression_level": "6",
     "cpus": "1",
-    "disk_size": 40000,
-    "headless": false,
+    "disk_size": "40000",
+    "headless": "false",
     "memory": "512",
     "mirror": "http://omnios.omniti.com/media"
   }

@@ -42,10 +42,10 @@
     "output": "debian-8.0.0-amd64.box"
   }],
   "variables": {
-    "compression_level": 6,
+    "compression_level": "6",
     "cpus": "1",
-    "disk_size": 40000,
-    "headless": false,
+    "disk_size": "40000",
+    "headless": "false",
     "memory": "512",
     "mirror": "http://cdimage.debian.org/debian-cd"
   }
