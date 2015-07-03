@@ -1,6 +1,6 @@
 # packer-templates
 
-[![Build Status](http://img.shields.io/travis/kaorimatz/packer-templates.svg?style=flat)](https://travis-ci.org/kaorimatz/packer-templates)
+[![Travis](https://img.shields.io/travis/kaorimatz/packer-templates.svg)](https://travis-ci.org/kaorimatz/packer-templates)
 
 Templates for [Packer](http://www.packer.io/)
 
@@ -29,6 +29,6 @@ You can configure each template to match your requirements by setting the follow
 
 ### Example
 
-Build an uncompressed Fedora 20 vagrant box with a 4GB hard disk:
+Build an uncompressed Fedora 22 vagrant box with a 4GB hard disk:
 
-    $ packer build -var compression_level=0 -var disk_size=4000 fedora-20-x86_64.json
+    $ packer build -var compression_level=0 -var disk_size=4000 fedora-22-x86_64.json
