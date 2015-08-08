@@ -3,13 +3,13 @@
 set -e
 set -x
 
-memory_size=$(free -m | awk '/^Mem:/ { print $2 }')
-swap_size=$((memory_size * 2))
-
-parted --script /dev/sda unit MB
-parted --script /dev/sda mktable msdos
-parted --align=cylinder --script /dev/sda mkpart primary 0 $swap_size
-parted --align=cylinder --script /dev/sda mkpart primary $swap_size 100%
+memory_size_in_kilobytes=$(free | awk '/^Mem:/ { print $2 }')
+swap_size_in_kilobytes=$((memory_size_in_kilobytes * 2))
+sfdisk /dev/sda <<EOF
+label: dos
+size=${swap_size_in_kilobytes}KiB, type=82
+                                   type=83, bootable
+EOF
 mkswap /dev/sda1
 mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
