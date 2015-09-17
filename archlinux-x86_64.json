@@ -2,8 +2,8 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "ArchLinux_64",
-    "iso_url": "{{user `mirror`}}/iso/2015.08.01/archlinux-2015.08.01-dual.iso",
-    "iso_checksum": "e98320cd5f0c346fff4140af0b5ffadd59849168",
+    "iso_url": "{{user `mirror`}}/iso/2015.09.01/archlinux-2015.09.01-dual.iso",
+    "iso_checksum": "4eb065d1b7639846703422a30c622eae0a558622",
     "iso_checksum_type": "sha1",
     "output_directory": "output-archlinux-x86_64",
     "vm_name": "packer-archlinux-x86_64",
