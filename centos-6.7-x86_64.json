@@ -49,7 +49,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "memory": "512",
+    "memory": "768",
     "mirror": "http://mirrors.kernel.org/centos"
   }
 }
