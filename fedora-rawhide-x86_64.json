@@ -2,8 +2,8 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Fedora_64",
-    "iso_url": "{{user `mirror`}}/releases/22/Server/x86_64/iso/Fedora-Server-netinst-x86_64-22.iso",
-    "iso_checksum": "9f1f2f19f75cc3b97da41878b5c86188fa8d27ed446bd97d9df615c137c77cfc",
+    "iso_url": "{{user `mirror`}}/releases/23/Server/x86_64/iso/Fedora-Server-netinst-x86_64-23.iso",
+    "iso_checksum": "32e0a15a1c71d0e2fd36a0af5b67a3b3af82976d2dfca0aefcb90d42f2ae6844",
     "iso_checksum_type": "sha256",
     "output_directory": "output-fedora-rawhide-x86_64",
     "vm_name": "packer-fedora-rawhide-x86_64",
@@ -12,9 +12,10 @@
     "http_directory": "http",
     "boot_wait": "5s",
     "boot_command": [
-      "<esc>",
-      "<wait>",
-      "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-rawhide/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
+      "<tab> ",
+      "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg ",
+      "biosdevname=0 ",
+      "net.ifnames=0 ",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
