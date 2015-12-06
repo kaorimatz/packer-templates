@@ -29,12 +29,12 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/fedora-22/virtualbox.sh",
+      "scripts/fedora/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/fedora/network.sh",
       "scripts/fedora/locale.sh",
-      "scripts/fedora-22/cleanup.sh",
+      "scripts/fedora/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
   }],
