@@ -36,6 +36,30 @@ namespace :packer do
       end
     end
   end
+
+  desc 'Push the packer template to Atlas'
+  task :push, [:template, :slug, :version] do |t, args|
+    template = Pathname.new(args[:template])
+    slug = args[:slug]
+    version = args[:version]
+
+    json = JSON.parse(template.read)
+    post_processors = json['post-processors']
+    post_processors << atlas_post_processor_config(slug, version)
+    json['post-processors'] = [post_processors]
+    json['push'] = push_config(slug)
+
+    file = Tempfile.open('packer-templates') do |f|
+      f.tap do |f|
+        JSON.dump(json, f)
+      end
+    end
+
+    unless system("packer push -var-file=vars/release.json '#{file.path}'")
+      puts Rainbow("Failed to push #{template} to Atlas").red
+      fail "Failed to push #{template} to Atlas"
+    end
+  end
 end
 
 namespace :spec do
@@ -45,7 +69,7 @@ namespace :spec do
     desc "Run serverspec to #{host}"
     RSpec::Core::RakeTask.new(host) do |task|
       ENV['HOST'] = host
-      task.pattern = "spec/*_spec.rb"
+      task.pattern = 'spec/*_spec.rb'
     end
   end
 end
@@ -59,4 +83,24 @@ end
 
 def available?(response)
   response.is_a?(Net::HTTPSuccess) || response.is_a?(Net::HTTPRedirection)
+end
+
+def atlas_post_processor_config(slug, version)
+  {
+    'type' => 'atlas',
+    'artifact' => slug,
+    'artifact_type' => 'vagrant.box',
+    'metadata' => {
+      'version' => version,
+      'provider' => 'virtualbox',
+    },
+  }
+end
+
+def push_config(slug)
+  {
+    'name' => slug,
+    'base_dir' => File.dirname(__FILE__),
+    'vcs' => true,
+  }
 end
