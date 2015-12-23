@@ -3,5 +3,5 @@
 set -e
 set -x
 
-dd if=/dev/zero of=EMPTY bs=1M || :
-rm EMPTY
+sudo dd if=/dev/zero of=/EMPTY bs=1M || :
+sudo rm /EMPTY
