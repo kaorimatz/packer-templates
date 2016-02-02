@@ -3,7 +3,7 @@
 set -e
 set -x
 
-sudo pacman -S --noconfirm virtualbox-guest-utils
+sudo pacman -S --noconfirm virtualbox-guest-utils-nox
 sudo systemctl enable vboxservice
 
 sudo mkdir /etc/systemd/system/vboxservice.service.d/
