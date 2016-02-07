@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/kaorimatz/packer-templates.svg)](https://travis-ci.org/kaorimatz/packer-templates)
 
-Templates for [Packer](http://www.packer.io/)
+[Packer](https://www.packer.io/) templates for building [Vagrant](https://www.vagrantup.com/) base boxes
 
 ## Usage
 
@@ -12,7 +12,11 @@ Clone the repository:
 
 Build a machine image from the template in the repository:
 
-    $ packer build fedora-20-x86_64.json
+    $ packer build archlinux-x86_64.json
+
+Add the built box to Vagrant:
+
+    $ vagrant box add archlinux-x86_64 archlinux-x86_64.box
 
 ## Configuration
 
@@ -29,6 +33,12 @@ You can configure each template to match your requirements by setting the follow
 
 ### Example
 
-Build an uncompressed Fedora 22 vagrant box with a 4GB hard disk:
+Build an uncompressed Arch Linux vagrant box with a 4GB hard disk:
 
-    $ packer build -var compression_level=0 -var disk_size=4000 fedora-22-x86_64.json
+    $ packer build -var compression_level=0 -var disk_size=4000 archlinux-x86_64.json
+
+## Pre-built Boxes
+
+You can also use the pre-built boxes hosted on [Atlas](https://atlas.hashicorp.com/kaorimatz).
+
+    $ vagrant box add kaorimatz/archlinux-x86_64
