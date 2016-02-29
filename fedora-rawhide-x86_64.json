@@ -13,7 +13,7 @@
     "boot_wait": "5s",
     "boot_command": [
       "<tab> ",
-      "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg ",
+      "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-rawhide/anaconda-ks.cfg ",
       "biosdevname=0 ",
       "net.ifnames=0 ",
       "<enter>"
