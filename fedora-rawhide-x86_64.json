@@ -33,7 +33,6 @@
       "scripts/fedora/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/fedora/network.sh",
       "scripts/fedora/locale.sh",
       "scripts/fedora/cleanup.sh",
       "scripts/common/minimize.sh"
