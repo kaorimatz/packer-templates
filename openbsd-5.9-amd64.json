@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "OpenBSD_64",
-    "iso_url": "{{user `mirror`}}/5.8/amd64/cd58.iso",
-    "iso_checksum": "19afc0e6ba4e22e03906364dbaf92a63bc273e5236a9be6c2cf27fc2cfe132cc",
+    "iso_url": "{{user `mirror`}}/5.9/amd64/cd59.iso",
+    "iso_checksum": "ea3bad95ed6975784bfc85a837820dace4147443e57cf23c1a6e4d12243d37c2",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-openbsd-5.8-amd64",
-    "vm_name": "packer-openbsd-5.8-amd64",
+    "output_directory": "output-openbsd-5.9-amd64",
+    "vm_name": "packer-openbsd-5.9-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,8 +14,8 @@
     "boot_command": [
       "S<enter><wait>",
       "dhclient em0<enter><wait>",
-      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-5.8/install.conf<enter><wait>",
-      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-5.8/install-chroot.sh<enter><wait>",
+      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-5.9/install.conf<enter><wait>",
+      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-5.9/install-chroot.sh<enter><wait>",
       "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -40,7 +40,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "openbsd-5.8-amd64.box",
+    "output": "openbsd-5.9-amd64.box",
     "vagrantfile_template": "vagrantfile_templates/openbsd.rb"
   }],
   "variables": {
