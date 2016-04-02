@@ -3,7 +3,7 @@
     "type": "virtualbox-iso",
     "guest_os_type": "OpenSolaris_64",
     "iso_url": "{{user `mirror`}}/OmniOS_Text_r151016.iso",
-    "iso_checksum": "b8e2c23208f0a9630644c6942ef5402775fb2c4e",
+    "iso_checksum": "5fbd62037120dea29edc58ecddfb15d9e8b1d696",
     "iso_checksum_type": "sha1",
     "output_directory": "output-omnios-r151016",
     "vm_name": "packer-omnios-r151016",
