@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "{{user `mirror`}}/7.10.0/amd64/iso-cd/debian-7.10.0-amd64-netinst.iso",
-    "iso_checksum": "1ade0f396aee06e51e6333f2a947c7ab234f63c61e4a8495f9a20a16cff755b2",
+    "iso_url": "{{user `mirror`}}/7.11.0/amd64/iso-cd/debian-7.11.0-amd64-netinst.iso",
+    "iso_checksum": "62876fb786f203bc732ec1bd2ca4c8faea19d0a97c5936d69f3406ef92ff49bd",
     "iso_checksum_type": "sha256",
-    "output_directory": "output-debian-7.10-amd64",
-    "vm_name": "packer-debian-7.10-amd64",
+    "output_directory": "output-debian-7.11-amd64",
+    "vm_name": "packer-debian-7.11-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,7 +14,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-7.10/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-7.11/preseed.cfg ",
       "<enter>"
     ],
     "ssh_wait_timeout": "60m",
@@ -40,7 +40,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "debian-7.10-amd64.box"
+    "output": "debian-7.11-amd64.box"
   }],
   "variables": {
     "compression_level": "6",
