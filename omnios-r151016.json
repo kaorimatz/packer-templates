@@ -56,7 +56,7 @@
       "cp /etc/nsswitch.dns /etc/nsswitch.conf<enter><wait>",
       "ipadm create-addr -T dhcp e1000g0/dhcp<enter><wait>"
     ],
-    "ssh_wait_timeout": "60m",
+    "ssh_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "sudo /usr/sbin/shutdown -i 5 -g 0 -y",

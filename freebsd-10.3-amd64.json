@@ -19,7 +19,7 @@
       "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.3/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
-    "ssh_wait_timeout": "60m",
+    "ssh_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "guest_additions_mode": "disable",

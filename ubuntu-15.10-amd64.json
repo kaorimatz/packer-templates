@@ -31,7 +31,7 @@
       "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-15.10/preseed.cfg ",
       "<enter>"
     ],
-    "ssh_wait_timeout": "60m",
+    "ssh_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "sudo systemctl poweroff",

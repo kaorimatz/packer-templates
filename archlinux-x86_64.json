@@ -16,7 +16,7 @@
       "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/install{,-chroot}.sh'<enter><wait>",
       "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
     ],
-    "ssh_wait_timeout": "60m",
+    "ssh_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "guest_additions_mode": "disable",

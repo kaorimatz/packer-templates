@@ -18,7 +18,7 @@
       "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-5.9/install-chroot.sh<enter><wait>",
       "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
     ],
-    "ssh_wait_timeout": "60m",
+    "ssh_timeout": "60m",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "guest_additions_mode": "disable",
