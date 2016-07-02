@@ -19,7 +19,7 @@
       "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.3/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "guest_additions_mode": "disable",
@@ -52,6 +52,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
+    "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
+    "ssh_timeout": "60m"
   }
 }

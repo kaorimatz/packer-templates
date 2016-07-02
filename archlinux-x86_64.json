@@ -16,7 +16,7 @@
       "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/install{,-chroot}.sh'<enter><wait>",
       "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
     ],
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "guest_additions_mode": "disable",
@@ -47,6 +47,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://mirrors.kernel.org/archlinux"
+    "mirror": "http://mirrors.kernel.org/archlinux",
+    "ssh_timeout": "60m"
   }
 }

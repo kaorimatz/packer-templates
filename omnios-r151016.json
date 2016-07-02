@@ -56,7 +56,7 @@
       "cp /etc/nsswitch.dns /etc/nsswitch.conf<enter><wait>",
       "ipadm create-addr -T dhcp e1000g0/dhcp<enter><wait>"
     ],
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "sudo /usr/sbin/shutdown -i 5 -g 0 -y",
@@ -85,6 +85,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://omnios.omniti.com/media"
+    "mirror": "http://omnios.omniti.com/media",
+    "ssh_timeout": "60m"
   }
 }

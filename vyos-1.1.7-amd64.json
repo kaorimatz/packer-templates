@@ -46,7 +46,7 @@
       "exit<enter><wait>"
     ],
     "shutdown_command": "sudo poweroff",
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "vboxmanage": [
@@ -77,6 +77,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://mirror.vyos.net"
+    "mirror": "http://mirror.vyos.net",
+    "ssh_timeout": "60m"
   }
 }

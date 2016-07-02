@@ -18,7 +18,7 @@
       "net.ifnames=0 ",
       "<enter>"
     ],
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "sudo systemctl poweroff",
@@ -49,6 +49,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://download.fedoraproject.org/pub/fedora/linux"
+    "mirror": "http://download.fedoraproject.org/pub/fedora/linux",
+    "ssh_timeout": "60m"
   }
 }

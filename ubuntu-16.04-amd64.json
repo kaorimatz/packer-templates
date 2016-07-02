@@ -31,7 +31,7 @@
       "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-16.04/preseed.cfg ",
       "<enter>"
     ],
-    "ssh_timeout": "60m",
+    "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "sudo systemctl poweroff",
@@ -62,6 +62,7 @@
     "disk_size": "40000",
     "headless": "false",
     "memory": "512",
-    "mirror": "http://releases.ubuntu.com"
+    "mirror": "http://releases.ubuntu.com",
+    "ssh_timeout": "60m"
   }
 }
