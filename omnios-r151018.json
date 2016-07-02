@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "OpenSolaris_64",
-    "iso_url": "{{user `mirror`}}/OmniOS_Text_r151016.iso",
-    "iso_checksum": "5fbd62037120dea29edc58ecddfb15d9e8b1d696",
+    "iso_url": "{{user `mirror`}}/OmniOS_Text_r151018.iso",
+    "iso_checksum": "48c58f4a97f01d4c4929b6995e75523fea444a3b",
     "iso_checksum_type": "sha1",
-    "output_directory": "output-omnios-r151016",
-    "vm_name": "packer-omnios-r151016",
+    "output_directory": "output-omnios-r151018",
+    "vm_name": "packer-omnios-r151018",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -76,7 +76,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "omnios-r151016.box",
+    "output": "omnios-r151018.box",
     "vagrantfile_template": "vagrantfile_templates/omnios.rb"
   }],
   "variables": {
