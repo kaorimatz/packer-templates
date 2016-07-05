@@ -1,6 +1,10 @@
 require 'spec_helper'
 
-describe kernel_module('vboxsf'), unless: %w(freebsd openbsd).include?(os[:family]) do
+describe kernel_module('vboxsf'), unless: %w(freebsd openbsd solaris).include?(os[:family]) do
+  it { should be_loaded }
+end
+
+describe kernel_module('vboxfs'), if: os[:family] == 'solaris' do
   it { should be_loaded }
 end
 

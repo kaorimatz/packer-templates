@@ -5,7 +5,7 @@ def ssh_server_package
   when 'arch'
     'openssh'
   when 'solaris'
-    'service/network/ssh'
+    'network/openssh-server'
   else
     'openssh-server'
   end
