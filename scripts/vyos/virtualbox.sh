@@ -3,6 +3,10 @@
 set -e
 set -x
 
+if [ "$PACKER_BUILDER_TYPE" != "virtualbox-iso" ]; then
+  exit 0
+fi
+
 sudo aptitude -y install build-essential
 sudo aptitude -y install bzip2
 sudo aptitude -y install dkms
