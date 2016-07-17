@@ -3,6 +3,10 @@
 set -e
 set -x
 
+if [ "$PACKER_BUILDER_TYPE" != "virtualbox-iso" ]; then
+  exit 0
+fi
+
 sudo /usr/sbin/lofiadm -a VBoxGuestAdditions.iso /dev/lofi/1
 sudo /usr/sbin/mount -F hsfs /dev/lofi/1 /mnt/
 yes | sudo /usr/sbin/pkgadd -d /mnt/VBoxSolarisAdditions.pkg all
