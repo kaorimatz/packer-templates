@@ -3,9 +3,9 @@
     "type": "virtualbox-iso",
     "guest_os_type": "ArchLinux_64",
     "iso_url": "{{user `mirror`}}/iso/2016.07.01/archlinux-2016.07.01-dual.iso",
-    "iso_checksum": "b5caa9cddab841e508ab46722d220986b8f5fdac",
-    "iso_checksum_type": "sha1",
-    "output_directory": "output-archlinux-x86_64",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-archlinux-x86_64-{{build_type}}",
     "vm_name": "packer-archlinux-x86_64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
@@ -25,11 +25,37 @@
       ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
       ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
     ]
+  }, {
+    "type": "vmware-iso",
+    "guest_os_type": "other3xlinux-64",
+    "iso_url": "{{user `mirror`}}/iso/2016.07.01/archlinux-2016.07.01-dual.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-archlinux-x86_64-{{build_type}}",
+    "vm_name": "packer-archlinux-x86_64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "5s",
+    "boot_command": [
+      "<enter><wait10><wait10>",
+      "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/install{,-chroot}.sh'<enter><wait>",
+      "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo systemctl poweroff",
+    "vmx_data": {
+      "memsize": "{{user `memory`}}",
+      "numvcpus": "{{user `cpus`}}"
+    }
   }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
       "scripts/archlinux/virtualbox.sh",
+      "scripts/archlinux/vmware.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/archlinux/cleanup.sh",
@@ -39,13 +65,15 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "archlinux-x86_64.box"
+    "output": "archlinux-x86_64-{{.Provider}}.box"
   }],
   "variables": {
     "compression_level": "6",
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
+    "iso_checksum": "b5caa9cddab841e508ab46722d220986b8f5fdac",
+    "iso_checksum_type": "sha1",
     "memory": "512",
     "mirror": "http://mirrors.kernel.org/archlinux",
     "ssh_timeout": "60m"
