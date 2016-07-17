@@ -12,11 +12,11 @@ Clone the repository:
 
 Build a machine image from the template in the repository:
 
-    $ packer build archlinux-x86_64.json
+    $ packer build -only=virtualbox-iso archlinux-x86_64.json
 
 Add the built box to Vagrant:
 
-    $ vagrant box add archlinux-x86_64 archlinux-x86_64.box
+    $ vagrant box add archlinux-x86_64 archlinux-x86_64-virtualbox.box
 
 ## Configuration
 
@@ -33,9 +33,9 @@ You can configure each template to match your requirements by setting the follow
 
 ### Example
 
-Build an uncompressed Arch Linux vagrant box with a 4GB hard disk:
+Build an uncompressed Arch Linux vagrant box with a 4GB hard disk using the VirtualBox provider:
 
-    $ packer build -var compression_level=0 -var disk_size=4000 archlinux-x86_64.json
+    $ packer build -only=virtualbox-iso -var compression_level=0 -var disk_size=4000 archlinux-x86_64.json
 
 ## Pre-built Boxes
 
