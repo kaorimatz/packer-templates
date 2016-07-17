@@ -1,11 +1,19 @@
-PARTITIONS=ada0
+if [ -e /dev/ada0 ]; then
+  PARTITIONS=ada0
+elif [ -e /dev/da0 ]; then
+  PARTITIONS=da0
+else
+  echo "ERROR: There is no disk available for installation" >&2
+  exit 1
+fi
 
 #!/bin/sh
 cat <<EOF > /etc/resolv.conf
 nameserver 8.8.8.8
 EOF
 
-ASSUME_ALWAYS_YES=yes pkg install sudo curl
+ASSUME_ALWAYS_YES=yes pkg install curl
+ASSUME_ALWAYS_YES=yes pkg install sudo
 
 cat <<EOF > /etc/rc.conf
 ifconfig_em0="DHCP"
