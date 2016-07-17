@@ -3,6 +3,10 @@
 set -e
 set -x
 
+if [ "$PACKER_BUILDER_TYPE" != "virtualbox-iso" ]; then
+  exit 0
+fi
+
 sudo yum -y install bzip2
 sudo yum -y --enablerepo=epel install dkms
 sudo yum -y install kernel-devel
