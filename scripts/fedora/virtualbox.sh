@@ -3,6 +3,10 @@
 set -e
 set -x
 
+if [ "$PACKER_BUILDER_TYPE" != "virtualbox-iso" ]; then
+  exit 0
+fi
+
 sudo dnf -y install bzip2
 sudo dnf -y install dkms
 sudo dnf -y install kernel-devel
