@@ -3,9 +3,9 @@
     "type": "virtualbox-iso",
     "guest_os_type": "FreeBSD_64",
     "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/9.3/FreeBSD-9.3-RELEASE-amd64-disc1.iso",
-    "iso_checksum": "5a3c82653d77bba7d7ded8bd7efbedc09d52cf4045d98ce52a82c9e0f8fa9b0e",
-    "iso_checksum_type": "sha256",
-    "output_directory": "output-freebsd-9.3-amd64",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-freebsd-9.3-amd64-{{build_type}}",
     "vm_name": "packer-freebsd-9.3-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
@@ -28,12 +28,42 @@
       ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
       ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
     ]
+  }, {
+    "type": "vmware-iso",
+    "guest_os_type": "freeBSD-64",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/9.3/FreeBSD-9.3-RELEASE-amd64-disc1.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-freebsd-9.3-amd64-{{build_type}}",
+    "vm_name": "packer-freebsd-9.3-amd64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "10s",
+    "boot_command": [
+      "2<enter><wait10><wait10>",
+      "<enter><wait>",
+      "mdmfs -s 100m md1 /tmp<enter><wait>",
+      "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-9.3/installerconfig<enter><wait>",
+      "bsdinstall script /tmp/installerconfig && reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "tools_upload_flavor": "freebsd",
+    "shutdown_command": "sudo poweroff",
+    "vmx_data": {
+      "memsize": "{{user `memory`}}",
+      "numvcpus": "{{user `cpus`}}"
+    }
   }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/freebsd/init.sh",
       "scripts/freebsd/virtualbox.sh",
+      "scripts/freebsd/vmware.sh",
+      "scripts/freebsd/init.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/freebsd/cleanup.sh",
@@ -43,7 +73,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "freebsd-9.3-amd64.box",
+    "output": "freebsd-9.3-amd64-{{.Provider}}.box",
     "vagrantfile_template": "vagrantfile_templates/freebsd.rb"
   }],
   "variables": {
@@ -51,6 +81,8 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
+    "iso_checksum": "5a3c82653d77bba7d7ded8bd7efbedc09d52cf4045d98ce52a82c9e0f8fa9b0e",
+    "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
     "ssh_timeout": "60m"
