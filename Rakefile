@@ -14,7 +14,7 @@ VAGRANT_PROVIDERS = {
   }
 }.freeze
 
-task :default => ['packer:validate', 'packer:check_iso_url']
+task default: ['packer:validate', 'packer:check_iso_url']
 
 namespace :packer do
   desc 'Validate all the packer templates'
@@ -23,7 +23,7 @@ namespace :packer do
       puts Rainbow("Validating #{template}...").green
       unless system "packer validate #{template}"
         puts Rainbow("#{template} is not a valid packer template").red
-        fail "#{template} is not a valid packer template"
+        raise "#{template} is not a valid packer template"
       end
     end
   end
@@ -39,7 +39,7 @@ namespace :packer do
         request_head(iso_url) do |response|
           unless available?(response)
             puts Rainbow("#{iso_url} is not available: #{response.message}").red
-            fail "#{iso_url} is not available"
+            raise "#{iso_url} is not available"
           end
         end
       end
@@ -74,7 +74,7 @@ namespace :packer do
 
     unless system("packer push -var-file=vars/release.json '#{file.path}'")
       puts Rainbow("Failed to push #{template} to Atlas").red
-      fail "Failed to push #{template} to Atlas"
+      raise "Failed to push #{template} to Atlas"
     end
   end
 end
@@ -118,6 +118,6 @@ def push_config(slug)
   {
     'name' => slug,
     'base_dir' => File.dirname(__FILE__),
-    'vcs' => true,
+    'vcs' => true
   }
 end

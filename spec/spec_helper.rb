@@ -6,13 +6,13 @@ set :backend, :ssh
 options = {}
 ssh_config = `vagrant ssh-config #{ENV['HOST']}`
 ssh_config.each_line do |line|
-  if match = /HostName (.*)/.match(line)
+  if (match = /HostName (.*)/.match(line))
     options[:host_name] = match[1]
-  elsif match = /User (.*)/.match(line)
+  elsif (match = /User (.*)/.match(line))
     options[:user] = match[1]
-  elsif match = /IdentityFile (.*)/.match(line)
-    options[:keys] = [match[1].gsub(/"/, '')]
-  elsif match = /Port (.*)/.match(line)
+  elsif (match = /IdentityFile (.*)/.match(line))
+    options[:keys] = [match[1].delete('"')]
+  elsif (match = /Port (.*)/.match(line))
     options[:port] = match[1]
   end
 end
