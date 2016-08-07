@@ -5,6 +5,15 @@ require 'rainbow'
 require 'rspec/core/rake_task'
 require 'uri'
 
+VAGRANT_PROVIDERS = {
+  virtualbox: {
+    builder_type: 'virtualbox-iso'
+  },
+  vmware_desktop: {
+    builder_type: 'vmware-iso'
+  }
+}.freeze
+
 task :default => ['packer:validate', 'packer:check_iso_url']
 
 namespace :packer do
@@ -38,15 +47,23 @@ namespace :packer do
   end
 
   desc 'Push the packer template to Atlas'
-  task :push, [:template, :slug, :version] do |t, args|
+  task :push, [:template, :slug, :version, :provider] do |_t, args|
     template = Pathname.new(args[:template])
     slug = args[:slug]
     version = args[:version]
+    provider = args[:provider]
 
     json = JSON.parse(template.read)
+
+    builders = json['builders']
+    builders.select! do |builder|
+      builder['type'] == VAGRANT_PROVIDERS[provider.to_sym][:builder_type]
+    end
+
     post_processors = json['post-processors']
-    post_processors << atlas_post_processor_config(slug, version)
+    post_processors << atlas_post_processor_config(slug, version, provider)
     json['post-processors'] = [post_processors]
+
     json['push'] = push_config(slug)
 
     file = Tempfile.open('packer-templates') do |f|
@@ -85,15 +102,15 @@ def available?(response)
   response.is_a?(Net::HTTPSuccess) || response.is_a?(Net::HTTPRedirection)
 end
 
-def atlas_post_processor_config(slug, version)
+def atlas_post_processor_config(slug, version, provider)
   {
     'type' => 'atlas',
     'artifact' => slug,
     'artifact_type' => 'vagrant.box',
     'metadata' => {
       'version' => version,
-      'provider' => 'virtualbox',
-    },
+      'provider' => provider
+    }
   }
 end
 
