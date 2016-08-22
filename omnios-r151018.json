@@ -159,7 +159,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "48c58f4a97f01d4c4929b6995e75523fea444a3b",
+    "iso_checksum": "accb4dec37021e47414c6b64929ef1b8e1f2d6d9",
     "iso_checksum_type": "sha1",
     "memory": "512",
     "mirror": "http://omnios.omniti.com/media",
