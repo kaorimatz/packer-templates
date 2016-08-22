@@ -45,7 +45,6 @@
       "save<enter><wait>",
       "exit<enter><wait>"
     ],
-    "shutdown_command": "sudo poweroff",
     "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
