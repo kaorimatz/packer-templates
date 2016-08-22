@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "{{user `mirror`}}/16.04/ubuntu-16.04-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/16.04/ubuntu-16.04.1-server-amd64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-16.04-amd64-{{build_type}}",
@@ -42,7 +42,7 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "ubuntu-64",
-    "iso_url": "{{user `mirror`}}/16.04/ubuntu-16.04-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/16.04/ubuntu-16.04.1-server-amd64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-16.04-amd64-{{build_type}}",
@@ -102,7 +102,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "b8b172cbdf04f5ff8adc8c2c1b4007ccf66f00fc6a324a6da6eba67de71746f6",
+    "iso_checksum": "29a8b9009509b39d542ecb229787cdf48f05e739a932289de9e9858d7c487c80",
     "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://releases.ubuntu.com",
