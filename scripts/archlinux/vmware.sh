@@ -9,4 +9,4 @@ fi
 
 sudo pacman -S --noconfirm open-vm-tools
 sudo systemctl enable vmtoolsd
-sudo mkdir /mnt/hgfs
+sudo mkdir -p /mnt/hgfs

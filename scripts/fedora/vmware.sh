@@ -8,4 +8,4 @@ if [ "$PACKER_BUILDER_TYPE" != "vmware-iso" ]; then
 fi
 
 sudo dnf -y install open-vm-tools
-sudo mkdir /mnt/hgfs
+sudo mkdir -p /mnt/hgfs
