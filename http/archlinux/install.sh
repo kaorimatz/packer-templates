@@ -24,3 +24,5 @@ genfstab -p /mnt >> /mnt/etc/fstab
 swapoff /dev/sda1
 
 arch-chroot /mnt /bin/bash
+
+syslinux-install_update -i -a -m -c /mnt

@@ -28,7 +28,6 @@ ln -sf /dev/null /etc/systemd/network/99-default.link
 systemctl enable sshd
 systemctl enable dhcpcd@eth0
 
-syslinux-install_update -i -a -m
 sed -i \
   -e 's,\(APPEND root=\).*,\1/dev/sda2,' \
   -e 's/TIMEOUT.*/TIMEOUT 10/' \
