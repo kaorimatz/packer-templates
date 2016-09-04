@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "ArchLinux_64",
-    "iso_url": "{{user `mirror`}}/iso/2016.07.01/archlinux-2016.07.01-dual.iso",
+    "iso_url": "{{user `mirror`}}/iso/2016.09.03/archlinux-2016.09.03-dual.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -28,7 +28,7 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "other3xlinux-64",
-    "iso_url": "{{user `mirror`}}/iso/2016.07.01/archlinux-2016.07.01-dual.iso",
+    "iso_url": "{{user `mirror`}}/iso/2016.09.03/archlinux-2016.09.03-dual.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -72,7 +72,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "b5caa9cddab841e508ab46722d220986b8f5fdac",
+    "iso_checksum": "bcec1d7c69f9c4200f34408e1af84bc3118801ff",
     "iso_checksum_type": "sha1",
     "memory": "512",
     "mirror": "http://mirrors.kernel.org/archlinux",
