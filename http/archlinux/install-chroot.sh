@@ -28,7 +28,6 @@ ln -sf /dev/null /etc/systemd/network/99-default.link
 systemctl enable sshd
 systemctl enable dhcpcd@eth0
 
-sed -i \
-  -e 's,\(APPEND root=\).*,\1/dev/sda2,' \
-  -e 's/TIMEOUT.*/TIMEOUT 10/' \
-  /boot/syslinux/syslinux.cfg
+grub-install /dev/sda
+sed -i -e 's/^GRUB_TIMEOUT=.*$/GRUB_TIMEOUT=1/' /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg

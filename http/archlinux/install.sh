@@ -17,12 +17,10 @@ mount /dev/sda2 /mnt
 curl -fsS https://www.archlinux.org/mirrorlist/?country=all > /tmp/mirrolist
 grep '^#Server' /tmp/mirrolist | sort -R | head -n 50 | sed 's/^#//' > /tmp/mirrolist.50
 rankmirrors -v /tmp/mirrolist.50 | tee /etc/pacman.d/mirrorlist
-pacstrap /mnt base openssh sudo syslinux
+pacstrap /mnt base grub openssh sudo
 
 swapon /dev/sda1
 genfstab -p /mnt >> /mnt/etc/fstab
 swapoff /dev/sda1
 
 arch-chroot /mnt /bin/bash
-
-syslinux-install_update -i -a -m -c /mnt
