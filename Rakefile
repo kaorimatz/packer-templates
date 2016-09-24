@@ -46,11 +46,11 @@ namespace :packer do
     end
   end
 
-  desc 'Push the packer template to Atlas'
-  task :push, [:template, :slug, :version, :provider] do |_t, args|
+  desc 'Build and upload the vagrant box to Atlas'
+  task :release, [:template, :slug, :version, :provider] do |_t, args|
     template = Pathname.new(args[:template])
-    slug = args[:slug]
-    version = args[:version]
+    slug     = args[:slug]
+    version  = args[:version]
     provider = args[:provider]
 
     json = JSON.parse(template.read)
@@ -64,17 +64,15 @@ namespace :packer do
     post_processors << atlas_post_processor_config(slug, version, provider)
     json['post-processors'] = [post_processors]
 
-    json['push'] = push_config(slug)
-
     file = Tempfile.open('packer-templates') do |f|
       f.tap do |f|
         JSON.dump(json, f)
       end
     end
 
-    unless system("packer push -var-file=vars/release.json '#{file.path}'")
-      puts Rainbow("Failed to push #{template} to Atlas").red
-      raise "Failed to push #{template} to Atlas"
+    unless system("packer build -var-file=vars/release.json '#{file.path}'")
+      puts Rainbow("Failed to release #{slug} to Atlas").red
+      raise "Failed to release #{slug} to Atlas"
     end
   end
 end
@@ -111,13 +109,5 @@ def atlas_post_processor_config(slug, version, provider)
       'version' => version,
       'provider' => provider
     }
-  }
-end
-
-def push_config(slug)
-  {
-    'name' => slug,
-    'base_dir' => File.dirname(__FILE__),
-    'vcs' => true
   }
 end
