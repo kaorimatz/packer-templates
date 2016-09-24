@@ -77,16 +77,9 @@ namespace :packer do
   end
 end
 
-namespace :spec do
-  Pathname.glob('*.json').sort.each do |template|
-    name = template.basename('.json').to_s
-    host = name.gsub(/[.]/, '_')
-    desc "Run serverspec to #{host}"
-    RSpec::Core::RakeTask.new(host) do |task|
-      ENV['HOST'] = host
-      task.pattern = 'spec/*_spec.rb'
-    end
-  end
+desc 'Run serverspec tests'
+RSpec::Core::RakeTask.new(:spec, :host) do |_t, args|
+  ENV['HOST'] = args[:host]
 end
 
 def request_head(uri, &block)
