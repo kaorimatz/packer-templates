@@ -2,11 +2,11 @@
   "builders": [{
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "{{user `mirror`}}/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-debian-8.5-amd64-{{build_type}}",
-    "vm_name": "packer-debian-8.5-amd64",
+    "output_directory": "output-debian-8.6-amd64-{{build_type}}",
+    "vm_name": "packer-debian-8.6-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,7 +14,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-8.5/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-8.6/preseed.cfg ",
       "<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -28,11 +28,11 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "debian8-64",
-    "iso_url": "{{user `mirror`}}/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-debian-8.5-amd64-{{build_type}}",
-    "vm_name": "packer-debian-8.5-amd64",
+    "output_directory": "output-debian-8.6-amd64-{{build_type}}",
+    "vm_name": "packer-debian-8.6-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -40,7 +40,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-8.5/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-8.6/preseed.cfg ",
       "<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -67,14 +67,14 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "debian-8.5-amd64-{{.Provider}}.box"
+    "output": "debian-8.6-amd64-{{.Provider}}.box"
   }],
   "variables": {
     "compression_level": "6",
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "ad4e8c27c561ad8248d5ebc1d36eb172f884057bfeb2c22ead823f59fa8c3dff",
+    "iso_checksum": "9479c5c2df72ae3878116c43fb42eefae53d1fe363ce514a6afc8289064b9f5f",
     "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://cdimage.debian.org/debian-cd",
