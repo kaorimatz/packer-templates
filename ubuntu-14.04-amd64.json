@@ -70,7 +70,7 @@
     "scripts": [
       "scripts/ubuntu/apt.sh",
       "scripts/ubuntu/virtualbox.sh",
-      "scripts/ubuntu/vmware.sh",
+      "scripts/ubuntu-14.04/vmware.sh",
       "scripts/ubuntu/init.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
