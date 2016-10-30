@@ -3,24 +3,34 @@
 set -e
 set -x
 
+if [ -e /dev/vda ]; then
+  device=/dev/vda
+elif [ -e /dev/sda ]; then
+  device=/dev/sda
+else
+  echo "ERROR: There is no disk available for installation" >&2
+  exit 1
+fi
+export device
+
 memory_size_in_kilobytes=$(free | awk '/^Mem:/ { print $2 }')
 swap_size_in_kilobytes=$((memory_size_in_kilobytes * 2))
-sfdisk /dev/sda <<EOF
+sfdisk "$device" <<EOF
 label: dos
 size=${swap_size_in_kilobytes}KiB, type=82
                                    type=83, bootable
 EOF
-mkswap /dev/sda1
-mkfs.ext4 /dev/sda2
-mount /dev/sda2 /mnt
+mkswap "${device}1"
+mkfs.ext4 "${device}2"
+mount "${device}2" /mnt
 
 curl -fsS https://www.archlinux.org/mirrorlist/?country=all > /tmp/mirrolist
 grep '^#Server' /tmp/mirrolist | sort -R | head -n 50 | sed 's/^#//' > /tmp/mirrolist.50
 rankmirrors -v /tmp/mirrolist.50 | tee /etc/pacman.d/mirrorlist
 pacstrap /mnt base grub openssh sudo
 
-swapon /dev/sda1
+swapon "${device}1"
 genfstab -p /mnt >> /mnt/etc/fstab
-swapoff /dev/sda1
+swapoff "${device}1"
 
 arch-chroot /mnt /bin/bash
