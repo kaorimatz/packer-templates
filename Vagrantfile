@@ -5,6 +5,13 @@ Vagrant.configure('2') do |config|
 
     config.vm.define host do |c|
       c.vm.box = name
+      7.times do
+        c.vm.network :private_network, type: :dhcp
+      end
+
+      c.vm.provider :libvirt do |v, override|
+        override.vm.synced_folder '', '/vagrant', disabled: true
+      end
 
       c.vm.provider :virtualbox do |v|
         v.name = name
@@ -13,10 +20,6 @@ Vagrant.configure('2') do |config|
 
       c.vm.provider :vmware_fusion do |v|
         v.gui = false
-      end
-
-      7.times do
-        c.vm.network :private_network, type: :dhcp
       end
     end
   end
