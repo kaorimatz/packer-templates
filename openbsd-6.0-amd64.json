@@ -1,5 +1,31 @@
 {
   "builders": [{
+    "type": "qemu",
+    "iso_url": "{{user `mirror`}}/6.0/amd64/cd60.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-openbsd-6.0-amd64-{{build_type}}",
+    "vm_name": "packer-openbsd-6.0-amd64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "20s",
+    "boot_command": [
+      "S<enter><wait>",
+      "dhclient vio0<enter><wait>",
+      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.0/install.conf<enter><wait>",
+      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.0/install-chroot.sh<enter><wait>",
+      "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo shutdown -h -p now",
+    "qemuargs": [
+      ["-m", "{{user `memory`}}"],
+      ["-smp", "{{user `cpus`}}"]
+    ]
+  }, {
     "type": "virtualbox-iso",
     "guest_os_type": "OpenBSD_64",
     "iso_url": "{{user `mirror`}}/6.0/amd64/cd60.iso",
@@ -10,7 +36,7 @@
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
-    "boot_wait": "15s",
+    "boot_wait": "20s",
     "boot_command": [
       "S<enter><wait>",
       "dhclient em0<enter><wait>",
