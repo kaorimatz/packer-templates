@@ -1,5 +1,32 @@
 {
   "builders": [{
+    "type": "qemu",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/11.0/FreeBSD-11.0-RELEASE-amd64-disc1.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-freebsd-11.0-amd64-{{build_type}}",
+    "vm_name": "packer-freebsd-11.0-amd64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "5s",
+    "boot_command": [
+      "2<enter><wait10><wait10><wait10>",
+      "<enter><wait>",
+      "mdmfs -s 100m md1 /tmp<enter><wait>",
+      "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid vtnet0<enter><wait5>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-11.0/installerconfig<enter><wait>",
+      "bsdinstall script /tmp/installerconfig && reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo poweroff",
+    "qemuargs": [
+      ["-m", "{{user `memory`}}"],
+      ["-smp", "{{user `cpus`}}"]
+    ]
+  }, {
     "type": "virtualbox-iso",
     "guest_os_type": "FreeBSD_64",
     "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/11.0/FreeBSD-11.0-RELEASE-amd64-disc1.iso",
@@ -12,7 +39,7 @@
     "http_directory": "http",
     "boot_wait": "10s",
     "boot_command": [
-      "2<enter><wait10><wait10>",
+      "2<enter><wait10><wait10><wait10>",
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
@@ -41,7 +68,7 @@
     "http_directory": "http",
     "boot_wait": "10s",
     "boot_command": [
-      "2<enter><wait10><wait10>",
+      "2<enter><wait10><wait10><wait10>",
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",

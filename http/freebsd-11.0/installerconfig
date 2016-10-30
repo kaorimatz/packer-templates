@@ -1,4 +1,6 @@
-if [ -e /dev/ada0 ]; then
+if [ -e /dev/vtbd0 ]; then
+  PARTITIONS=vtbd0
+elif [ -e /dev/ada0 ]; then
   PARTITIONS=ada0
 elif [ -e /dev/da0 ]; then
   PARTITIONS=da0
@@ -15,8 +17,9 @@ EOF
 ASSUME_ALWAYS_YES=yes pkg install curl
 ASSUME_ALWAYS_YES=yes pkg install sudo
 
+interface=$(route get default | awk '/interface/ { print $2 }')
 cat <<EOF > /etc/rc.conf
-ifconfig_em0="DHCP"
+ifconfig_${interface}="DHCP"
 sshd_enable="YES"
 EOF
 
