@@ -19,3 +19,17 @@ end
 
 set :host, options[:host_name]
 set :ssh_options, options
+
+PROVIDER = ENV['HOST'].split('-').last
+
+def qemu?
+  PROVIDER == 'libvirt'
+end
+
+def virtualbox?
+  PROVIDER == 'virtualbox'
+end
+
+def vmware?
+  %w(vmware_desktop vmware_fusion vmware_workstation).include?(PROVIDER)
+end

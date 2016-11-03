@@ -1,11 +1,7 @@
 require 'spec_helper'
 
-def in_virtualbox?
-  host_inventory[:virtualization][:system] == 'vbox'
-end
-
 def vboxsf
-  return nil unless in_virtualbox?
+  return unless virtualbox?
 
   case os[:family]
   when 'freebsd', 'openbsd', 'solaris'
@@ -16,7 +12,7 @@ def vboxsf
 end
 
 def vboxfs
-  return nil unless in_virtualbox?
+  return unless virtualbox?
 
   if os[:family] == 'solaris'
     'vboxfs'
@@ -26,7 +22,7 @@ def vboxfs
 end
 
 def vboxguest
-  return nil unless in_virtualbox?
+  return unless virtualbox?
 
   case os[:family]
   when 'freebsd', 'openbsd'
@@ -37,7 +33,7 @@ def vboxguest
 end
 
 def dkms
-  return nil unless in_virtualbox?
+  return unless virtualbox?
 
   if os[:family] == 'fedora' && os[:release].to_i < 20
     'dkms_autoinstaller'
