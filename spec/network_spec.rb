@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 def interface_name(index)
-  if %w(freebsd openbsd).include?(os[:family])
+  if qemu?
+    if os[:family] == 'freebsd'
+      "vtnet#{index}"
+    elsif os[:family] == 'openbsd'
+      "vio#{index}"
+    else
+      "eth#{index}"
+    end
+  elsif %w(freebsd openbsd).include?(os[:family])
     "em#{index}"
   else
     "eth#{index}"
@@ -13,8 +21,4 @@ end
     it { should exist }
     it { should be_up }
   end
-end
-
-describe default_gateway do
-  its(:interface) { should eq interface_name(0) }
 end

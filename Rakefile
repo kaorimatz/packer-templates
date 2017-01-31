@@ -33,8 +33,10 @@ namespace :packer do
     Pathname.glob('*.json').sort.each do |template|
       json = JSON.parse(template.read)
       mirror = json['variables']['mirror']
-      json['builders'].each do |builder|
-        iso_url = builder['iso_url'].sub('{{user `mirror`}}', mirror)
+      iso_urls = json['builders'].map do |builder|
+        builder['iso_url'].sub('{{user `mirror`}}', mirror)
+      end
+      iso_urls.uniq.each do |iso_url|
         puts Rainbow("Checking if #{iso_url} is available...").green
         request_head(iso_url) do |response|
           unless available?(response)
@@ -46,11 +48,11 @@ namespace :packer do
     end
   end
 
-  desc 'Push the packer template to Atlas'
-  task :push, [:template, :slug, :version, :provider] do |_t, args|
+  desc 'Build and upload the vagrant box to Atlas'
+  task :release, [:template, :slug, :version, :provider] do |_t, args|
     template = Pathname.new(args[:template])
-    slug = args[:slug]
-    version = args[:version]
+    slug     = args[:slug]
+    version  = args[:version]
     provider = args[:provider]
 
     json = JSON.parse(template.read)
@@ -64,31 +66,22 @@ namespace :packer do
     post_processors << atlas_post_processor_config(slug, version, provider)
     json['post-processors'] = [post_processors]
 
-    json['push'] = push_config(slug)
-
     file = Tempfile.open('packer-templates') do |f|
       f.tap do |f|
         JSON.dump(json, f)
       end
     end
 
-    unless system("packer push -var-file=vars/release.json '#{file.path}'")
-      puts Rainbow("Failed to push #{template} to Atlas").red
-      raise "Failed to push #{template} to Atlas"
+    unless system("packer build -var-file=vars/release.json '#{file.path}'")
+      puts Rainbow("Failed to release #{slug} to Atlas").red
+      raise "Failed to release #{slug} to Atlas"
     end
   end
 end
 
-namespace :spec do
-  Pathname.glob('*.json').sort.each do |template|
-    name = template.basename('.json').to_s
-    host = name.gsub(/[.]/, '_')
-    desc "Run serverspec to #{host}"
-    RSpec::Core::RakeTask.new(host) do |task|
-      ENV['HOST'] = host
-      task.pattern = 'spec/*_spec.rb'
-    end
-  end
+desc 'Run serverspec tests'
+RSpec::Core::RakeTask.new(:spec, :host) do |_t, args|
+  ENV['HOST'] = args[:host]
 end
 
 def request_head(uri, &block)
@@ -111,13 +104,5 @@ def atlas_post_processor_config(slug, version, provider)
       'version' => version,
       'provider' => provider
     }
-  }
-end
-
-def push_config(slug)
-  {
-    'name' => slug,
-    'base_dir' => File.dirname(__FILE__),
-    'vcs' => true
   }
 end
