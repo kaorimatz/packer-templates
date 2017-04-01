@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.4-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.5-server-amd64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-14.04-amd64-{{build_type}}",
@@ -33,7 +33,7 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
-    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.4-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.5-server-amd64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-14.04-amd64-{{build_type}}",
@@ -65,7 +65,7 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "ubuntu-64",
-    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.4-server-amd64.iso",
+    "iso_url": "{{user `mirror`}}/14.04/ubuntu-14.04.5-server-amd64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-ubuntu-14.04-amd64-{{build_type}}",
@@ -119,7 +119,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "07e4bb5569814eab41fafac882ba127893e3ff0bdb7ec931c9b2d040e3e94e7a",
+    "iso_checksum": "dde07d37647a1d2d9247e33f14e91acb10445a97578384896b4e1d985f754cc1",
     "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://releases.ubuntu.com",
