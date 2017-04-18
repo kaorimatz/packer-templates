@@ -87,7 +87,7 @@
       "scripts/centos-6.9/init.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/centos-6.9/locale.sh",
+      "scripts/centos/locale.sh",
       "scripts/centos-6.9/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
