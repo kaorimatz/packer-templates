@@ -13,9 +13,10 @@
     "boot_command": [
       "S<enter><wait>",
       "dhclient vio0<enter><wait>",
-      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
-      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
-      "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
+      "ftp -o install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
+      "ftp -o install.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.sh<enter><wait>",
+      "ftp -o install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
+      "sh install.sh < install-chroot.sh && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
@@ -40,9 +41,10 @@
     "boot_command": [
       "S<enter><wait>",
       "dhclient em0<enter><wait>",
-      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
-      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
-      "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
+      "ftp -o install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
+      "ftp -o install.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.sh<enter><wait>",
+      "ftp -o install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
+      "sh install.sh < install-chroot.sh && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
@@ -68,9 +70,10 @@
     "boot_command": [
       "S<enter><wait>",
       "dhclient em0<enter><wait>",
-      "ftp -o /install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
-      "ftp -o /install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
-      "/install -a -f /install.conf && chroot /mnt < /install-chroot.sh && reboot<enter>"
+      "ftp -o install.conf http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.conf<enter><wait>",
+      "ftp -o install.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install.sh<enter><wait>",
+      "ftp -o install-chroot.sh http://{{.HTTPIP}}:{{.HTTPPort}}/openbsd-6.1/install-chroot.sh<enter><wait>",
+      "sh install.sh < install-chroot.sh && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
