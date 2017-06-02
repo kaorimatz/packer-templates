@@ -96,7 +96,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "f426866ca632a35a3eeae8e4080cff25ec8da614",
+    "iso_checksum": "8d7a0370e46bfc7a73cf24696fd8982410932e1f",
     "iso_checksum_type": "sha1",
     "memory": "512",
     "mirror": "http://mirrors.kernel.org/archlinux",
