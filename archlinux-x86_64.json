@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/iso/2017.03.01/archlinux-2017.03.01-dual.iso",
+    "iso_url": "{{user `mirror`}}/iso/2017.04.01/archlinux-2017.04.01-x86_64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -26,7 +26,7 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "ArchLinux_64",
-    "iso_url": "{{user `mirror`}}/iso/2017.03.01/archlinux-2017.03.01-dual.iso",
+    "iso_url": "{{user `mirror`}}/iso/2017.04.01/archlinux-2017.04.01-x86_64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
