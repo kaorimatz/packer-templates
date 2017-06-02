@@ -5,7 +5,7 @@ def vmhgfs
 
   if %w(centos debian).include?(os[:family])
     'vmhgfs'
-  elsif os[:family] == 'ubuntu' && os[:release] != '16.04'
+  elsif os[:family] == 'ubuntu' && os[:release] == '12.04'
     'vmhgfs'
   else
     nil
