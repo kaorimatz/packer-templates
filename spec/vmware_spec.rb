@@ -3,7 +3,9 @@ require 'spec_helper'
 def vmhgfs
   return unless vmware?
 
-  if %w(centos debian).include?(os[:family])
+  if os[:family] == 'centos'
+    'vmhgfs'
+  elsif os[:family] == 'debian' && os[:release] =~ /^[678]\./
     'vmhgfs'
   elsif os[:family] == 'ubuntu' && os[:release] == '12.04'
     'vmhgfs'
