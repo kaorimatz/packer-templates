@@ -14,16 +14,16 @@ def synced_folder_fstype
   if virtualbox?
     'vboxsf'
   elsif vmware?
-    if %w(arch fedora).include?(os[:family])
-      'fuse.vmhgfs-fuse'
+    if os[:family] == 'centos'
+      'vmhgfs'
+    elsif os[:family] == 'debian' && os[:release] =~ /^[678]\./
+      'vmhgfs'
     elsif os[:family] == 'ubuntu' && os[:release] == '12.04'
       'vmhgfs'
     elsif os[:family] == 'ubuntu' && os[:release] == '14.04'
       'none'
-    elsif os[:family] == 'ubuntu'
-      'fuse.vmhgfs-fuse'
     else
-      'vmhgfs'
+      'fuse.vmhgfs-fuse'
     end
   end
 end

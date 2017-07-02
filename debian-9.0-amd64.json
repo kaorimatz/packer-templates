@@ -74,7 +74,6 @@
     "ssh_timeout": "{{user `ssh_timeout`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
-    "tools_upload_flavor": "linux",
     "shutdown_command": "sudo systemctl poweroff",
     "vmx_data": {
       "memsize": "{{user `memory`}}",
@@ -85,7 +84,7 @@
     "type": "shell",
     "scripts": [
       "scripts/debian/virtualbox.sh",
-      "scripts/debian/vmware.sh",
+      "scripts/debian-9.0/vmware.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/debian/cleanup.sh",
