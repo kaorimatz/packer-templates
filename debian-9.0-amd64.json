@@ -13,6 +13,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
+      "net.ifnames=0 ",
       "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.0/preseed.cfg ",
       "<enter>"
     ],
@@ -39,6 +40,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
+      "net.ifnames=0 ",
       "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.0/preseed.cfg ",
       "<enter>"
     ],
@@ -65,6 +67,7 @@
     "boot_command": [
       "<esc><wait>",
       "auto ",
+      "net.ifnames=0 ",
       "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.0/preseed.cfg ",
       "<enter>"
     ],
