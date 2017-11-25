@@ -14,7 +14,7 @@ def synced_folder_fstype
   if virtualbox?
     'vboxsf'
   elsif vmware?
-    if os[:family] == 'centos'
+    if os[:family] == 'redhat'
       'vmhgfs'
     elsif os[:family] == 'debian' && os[:release] =~ /^[678]\./
       'vmhgfs'
