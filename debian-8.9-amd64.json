@@ -76,7 +76,8 @@
     "vmx_data": {
       "memsize": "{{user `memory`}}",
       "numvcpus": "{{user `cpus`}}"
-    }
+    },
+    "vmx_remove_ethernet_interfaces": true
   }],
   "provisioners": [{
     "type": "shell",
