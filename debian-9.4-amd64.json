@@ -1,11 +1,11 @@
  {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/9.3.0/amd64/iso-cd/debian-9.3.0-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/9.4.0/amd64/iso-cd/debian-9.4.0-amd64-netinst.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-debian-9.3-amd64-{{build_type}}",
-    "vm_name": "packer-debian-9.3-amd64",
+    "output_directory": "output-debian-9.4-amd64-{{build_type}}",
+    "vm_name": "packer-debian-9.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -14,7 +14,7 @@
       "<esc><wait>",
       "auto ",
       "net.ifnames=0 ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.3/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.4/preseed.cfg ",
       "<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -28,11 +28,11 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "Debian_64",
-    "iso_url": "{{user `mirror`}}/9.3.0/amd64/iso-cd/debian-9.3.0-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/9.4.0/amd64/iso-cd/debian-9.4.0-amd64-netinst.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-debian-9.3-amd64-{{build_type}}",
-    "vm_name": "packer-debian-9.3-amd64",
+    "output_directory": "output-debian-9.4-amd64-{{build_type}}",
+    "vm_name": "packer-debian-9.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -41,7 +41,7 @@
       "<esc><wait>",
       "auto ",
       "net.ifnames=0 ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.3/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.4/preseed.cfg ",
       "<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -55,11 +55,11 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "debian8-64",
-    "iso_url": "{{user `mirror`}}/9.3.0/amd64/iso-cd/debian-9.3.0-amd64-netinst.iso",
+    "iso_url": "{{user `mirror`}}/9.4.0/amd64/iso-cd/debian-9.4.0-amd64-netinst.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-debian-9.3-amd64-{{build_type}}",
-    "vm_name": "packer-debian-9.3-amd64",
+    "output_directory": "output-debian-9.4-amd64-{{build_type}}",
+    "vm_name": "packer-debian-9.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -68,7 +68,7 @@
       "<esc><wait>",
       "auto ",
       "net.ifnames=0 ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.3/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-9.4/preseed.cfg ",
       "<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -85,7 +85,7 @@
     "type": "shell",
     "scripts": [
       "scripts/debian/virtualbox.sh",
-      "scripts/debian-9.3/vmware.sh",
+      "scripts/debian-9.4/vmware.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/debian/cleanup.sh",
@@ -95,17 +95,17 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "debian-9.3-amd64-{{.Provider}}.box"
+    "output": "debian-9.4-amd64-{{.Provider}}.box"
   }],
   "variables": {
     "compression_level": "6",
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "83480be837710a76fd4e75a6573ca110e06f5a7589d2d3852bdb0f45749800b3",
+    "iso_checksum": "124d270006703f2111224dec3bf7a9d01450168be41d4834f88fdd035552b044",
     "iso_checksum_type": "sha256",
     "memory": "512",
-    "mirror": "http://cdimage.debian.org/debian-cd/",
+    "mirror": "http://cdimage.debian.org/debian-cd",
     "ssh_timeout": "60m"
   }
 }
