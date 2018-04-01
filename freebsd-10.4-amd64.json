@@ -1,11 +1,11 @@
 {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.3/FreeBSD-10.3-RELEASE-amd64-disc1.iso",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.4/FreeBSD-10.4-RELEASE-amd64-disc1.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-freebsd-10.3-amd64-{{build_type}}",
-    "vm_name": "packer-freebsd-10.3-amd64",
+    "output_directory": "output-freebsd-10.4-amd64-{{build_type}}",
+    "vm_name": "packer-freebsd-10.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -15,7 +15,7 @@
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid vtnet0<enter><wait5>",
-      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.3/installerconfig<enter><wait>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.4/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -29,11 +29,11 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "FreeBSD_64",
-    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.3/FreeBSD-10.3-RELEASE-amd64-disc1.iso",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.4/FreeBSD-10.4-RELEASE-amd64-disc1.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-freebsd-10.3-amd64-{{build_type}}",
-    "vm_name": "packer-freebsd-10.3-amd64",
+    "output_directory": "output-freebsd-10.4-amd64-{{build_type}}",
+    "vm_name": "packer-freebsd-10.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -43,7 +43,7 @@
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
-      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.3/installerconfig<enter><wait>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.4/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -58,11 +58,11 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "freeBSD-64",
-    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.3/FreeBSD-10.3-RELEASE-amd64-disc1.iso",
+    "iso_url": "{{user `mirror`}}/releases/ISO-IMAGES/10.4/FreeBSD-10.4-RELEASE-amd64-disc1.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-freebsd-10.3-amd64-{{build_type}}",
-    "vm_name": "packer-freebsd-10.3-amd64",
+    "output_directory": "output-freebsd-10.4-amd64-{{build_type}}",
+    "vm_name": "packer-freebsd-10.4-amd64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -72,7 +72,7 @@
       "<enter><wait>",
       "mdmfs -s 100m md1 /tmp<enter><wait>",
       "dhclient -l /tmp/dhclient.leases -p /tmp/dhclient.pid em0<enter><wait5>",
-      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.3/installerconfig<enter><wait>",
+      "fetch -o /tmp/installerconfig http://{{.HTTPIP}}:{{.HTTPPort}}/freebsd-10.4/installerconfig<enter><wait>",
       "bsdinstall script /tmp/installerconfig && reboot<enter>"
     ],
     "ssh_timeout": "{{user `ssh_timeout`}}",
@@ -101,7 +101,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "freebsd-10.3-amd64-{{.Provider}}.box",
+    "output": "freebsd-10.4-amd64-{{.Provider}}.box",
     "vagrantfile_template": "vagrantfile_templates/freebsd.rb"
   }],
   "variables": {
@@ -109,7 +109,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "fef068cf6dea26923ab84b62ba9f21461ca0bdec90a0741c8ffb0e1ca29e410d",
+    "iso_checksum": "7ac73b2a899024e1d9e71e55b5c9b9ac13938468206c72c5a1cf23c7e0a715b4",
     "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
