@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/iso/2017.11.01/archlinux-2017.11.01-x86_64.iso",
+    "iso_url": "{{user `mirror`}}/iso/2018.04.01/archlinux-2018.04.01-x86_64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -26,7 +26,7 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "ArchLinux_64",
-    "iso_url": "{{user `mirror`}}/iso/2017.11.01/archlinux-2017.11.01-x86_64.iso",
+    "iso_url": "{{user `mirror`}}/iso/2018.04.01/archlinux-2018.04.01-x86_64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -52,7 +52,7 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "other3xlinux-64",
-    "iso_url": "{{user `mirror`}}/iso/2017.11.01/archlinux-2017.11.01-x86_64.iso",
+    "iso_url": "{{user `mirror`}}/iso/2018.04.01/archlinux-2018.04.01-x86_64.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-archlinux-x86_64-{{build_type}}",
@@ -97,7 +97,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "ce7bbccc246b6c4c6ff13eadbcdf18e44bb85d82",
+    "iso_checksum": "42cf488fb6cba31c57f8ad875cb03784760c4b94",
     "iso_checksum_type": "sha1",
     "memory": "512",
     "mirror": "http://mirrors.kernel.org/archlinux",
