@@ -8,6 +8,7 @@ if [ "$PACKER_BUILDER_TYPE" != "virtualbox-iso" ]; then
 fi
 
 sudo apt-get -y install bzip2
+sudo apt-get -y install linux-headers-$(uname -r)
 sudo apt-get -y install dkms
 sudo apt-get -y install make
 
