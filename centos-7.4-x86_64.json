@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "qemu",
-    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1708.iso",
+    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1804.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-centos-7.4-x86_64-{{build_type}}",
@@ -27,7 +27,7 @@
   }, {
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
-    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1708.iso",
+    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1804.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-centos-7.4-x86_64-{{build_type}}",
@@ -53,7 +53,7 @@
   }, {
     "type": "vmware-iso",
     "guest_os_type": "centos-64",
-    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1708.iso",
+    "iso_url": "{{user `mirror`}}/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1804.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output-centos-7.4-x86_64-{{build_type}}",
@@ -102,7 +102,7 @@
     "cpus": "1",
     "disk_size": "40000",
     "headless": "false",
-    "iso_checksum": "fe3d960cce4d2c1c9f1b66817fe87cc0ee1a1c6c5dd126204cb5c33d51a45620",
+    "iso_checksum": "937bf0a7b0932817f84f7230f15ed88911bbbd85c0c958680792b7f8d8f9c1a9",
     "iso_checksum_type": "sha256",
     "memory": "512",
     "mirror": "http://mirrors.kernel.org/centos",
