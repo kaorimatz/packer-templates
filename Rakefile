@@ -40,7 +40,7 @@ namespace :packer do
         puts Rainbow("Checking if #{iso_url} is available...").green
         request_head(iso_url) do |response|
           unless available?(response)
-            puts Rainbow("#{iso_url} is not available: #{response.message}").red
+            puts Rainbow("#{iso_url} is not available: uri=#{response.uri}, message=#{response.message}").red
             raise "#{iso_url} is not available"
           end
         end
@@ -86,13 +86,18 @@ end
 
 def request_head(uri, &block)
   uri = URI(uri)
-  Net::HTTP.start(uri.host, uri.port) do |http|
-    http.request_head(uri, &block)
+  response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+    http.request_head(uri)
+  end
+  if response.is_a?(Net::HTTPRedirection)
+    request_head(response['Location'], &block)
+  else
+    yield response
   end
 end
 
 def available?(response)
-  response.is_a?(Net::HTTPSuccess) || response.is_a?(Net::HTTPRedirection)
+  response.is_a?(Net::HTTPSuccess)
 end
 
 def atlas_post_processor_config(slug, version, provider)
